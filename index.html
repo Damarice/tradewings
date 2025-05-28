@@ -1,0 +1,1461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trade Wings Enterprises - Making Great Things Possible</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #c11010;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+            text-shadow: 0 0 20px rgba(193, 16, 16, 0.5);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #c11010;
+            transform: translateY(-2px);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #c11010;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #c11010, #ff4444);
+            color: #fff;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(193, 16, 16, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 70% 30%, rgba(193, 16, 16, 0.1) 0%, transparent 50%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        .hero .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content {
+            animation: fadeInLeft 1s ease-out;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(193, 16, 16, 0.1);
+            color: #c11010;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(193, 16, 16, 0.3);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            animation: typewriter 2s steps(40) 0.5s both;
+        }
+
+        .highlight {
+            color: #c11010;
+            position: relative;
+        }
+
+        .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #c11010, #ff4444);
+            animation: underlineExpand 1s ease-out 2.5s both;
+        }
+
+        .secondary {
+            color: #888;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #ccc;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 1s both;
+        }
+
+        .stats {
+            display: flex;
+            gap: 3rem;
+            margin: 2rem 0;
+            animation: fadeInUp 1s ease-out 1.5s both;
+        }
+
+        .stat-item {
+            transition: transform 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #c11010;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        .hero-visual {
+            position: relative;
+            animation: fadeInRight 1s ease-out 0.5s both;
+        }
+
+        .phone-mockup {
+            width: 300px;
+            height: 500px;
+            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+            border-radius: 25px;
+            padding: 20px;
+            position: relative;
+            margin: 0 auto;
+            border: 2px solid rgba(193, 16, 16, 0.3);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #111, #222);
+            border-radius: 15px;
+            padding: 30px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .phone-screen::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(193, 16, 16, 0.1), transparent);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        .floating-element {
+            position: absolute;
+            background: rgba(193, 16, 16, 0.1);
+            color: #c11010;
+            padding: 10px 15px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: 600;
+            border: 1px solid rgba(193, 16, 16, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .floating-element:nth-child(2) {
+            top: 20%;
+            right: -50px;
+            animation: floatElement 4s ease-in-out infinite;
+        }
+
+        .floating-element:nth-child(3) {
+            bottom: 30%;
+            left: -50px;
+            animation: floatElement 4s ease-in-out infinite 1s;
+        }
+
+        .floating-element:nth-child(4) {
+            top: 60%;
+            right: -30px;
+            animation: floatElement 4s ease-in-out infinite 2s;
+        }
+
+        /* Section Styles */
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .section-subtitle {
+            color: #c11010;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .section-description {
+            font-size: 1.1rem;
+            color: #ccc;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 20%, rgba(193, 16, 16, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            margin-bottom: 80px;
+        }
+
+        .about-text h3 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: #ffffff;
+        }
+
+        .about-text p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+
+        .highlight-text {
+            color: #c11010;
+            font-weight: 600;
+        }
+
+        .about-visual {
+            position: relative;
+        }
+
+        .about-card {
+            background: linear-gradient(135deg, rgba(193, 16, 16, 0.1) 0%, rgba(30, 30, 30, 0.8) 100%);
+            border: 1px solid rgba(193, 16, 16, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .about-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(193, 16, 16, 0.2);
+        }
+
+        .about-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #c11010, #ff4444);
+        }
+
+        .about-card h4 {
+            color: #c11010;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .about-card p {
+            color: #ccc;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .about-features {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #fff;
+            animation: slideInLeft 0.5s ease-out;
+        }
+
+        .feature-item:nth-child(2) { animation-delay: 0.1s; }
+        .feature-item:nth-child(3) { animation-delay: 0.2s; }
+        .feature-item:nth-child(4) { animation-delay: 0.3s; }
+
+        .feature-icon {
+            width: 24px;
+            height: 24px;
+            background: #c11010;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            flex-shrink: 0;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .value-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .value-card:nth-child(2) { animation-delay: 0.1s; }
+        .value-card:nth-child(3) { animation-delay: 0.2s; }
+        .value-card:nth-child(4) { animation-delay: 0.3s; }
+
+        .value-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            border-color: rgba(193, 16, 16, 0.3);
+            box-shadow: 0 15px 30px rgba(193, 16, 16, 0.2);
+        }
+
+        .value-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .value-card:hover .value-icon {
+            transform: rotate(10deg) scale(1.1);
+        }
+
+        .value-card h4 {
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .value-card p {
+            color: #ccc;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #111 0%, #000 100%);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .service-card:nth-child(2) { animation-delay: 0.2s; }
+        .service-card:nth-child(3) { animation-delay: 0.4s; }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(193, 16, 16, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-15px);
+            border-color: rgba(193, 16, 16, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .service-card.featured {
+            border-color: rgba(193, 16, 16, 0.3);
+            background: linear-gradient(135deg, rgba(193, 16, 16, 0.1), rgba(255, 255, 255, 0.05));
+        }
+
+        .service-number {
+            color: #c11010;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            opacity: 0.7;
+        }
+
+        .service-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .service-description {
+            color: #ccc;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .learn-more {
+            color: #c11010;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .learn-more:hover {
+            transform: translateX(5px);
+        }
+
+        /* Stats Section */
+        .stats-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .stat-card:nth-child(2) { animation-delay: 0.1s; }
+        .stat-card:nth-child(3) { animation-delay: 0.2s; }
+        .stat-card:nth-child(4) { animation-delay: 0.3s; }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            background: rgba(193, 16, 16, 0.1);
+        }
+
+        .stat-value {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #c11010;
+            margin-bottom: 10px;
+        }
+
+        .stat-description {
+            color: #ccc;
+            font-size: 14px;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #111 0%, #000 100%);
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin: 60px 0;
+        }
+
+        .contact-item {
+            text-align: center;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .contact-item:nth-child(2) { animation-delay: 0.2s; }
+        .contact-item:nth-child(3) { animation-delay: 0.4s; }
+
+        .contact-item:hover {
+            transform: translateY(-10px);
+            background: rgba(193, 16, 16, 0.1);
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .contact-item h4 {
+            color: #c11010;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .contact-item p {
+            color: #ccc;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background: #000;
+            padding: 60px 0 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #c11010;
+            margin-bottom: 15px;
+        }
+
+        .footer-description {
+            color: #ccc;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-link {
+            display: inline-block;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            background: #c11010;
+            transform: translateY(-3px);
+        }
+
+        .footer-title {
+            color: #fff;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 8px;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #c11010;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .contact-detail .contact-icon {
+            margin-top: 2px;
+        }
+
+        .contact-detail p {
+            color: #ccc;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+        }
+
+        .footer-bottom-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #888;
+            font-size: 14px;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-bottom-links a {
+            color: #888;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-bottom-links a:hover {
+            color: #c11010;
+        }
+
+        /* Animations */
+        @keyframes slideDown {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes fadeInLeft {
+            from { transform: translateX(-50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes fadeInRight {
+            from { transform: translateX(50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes slideInLeft {
+            from { transform: translateX(-20px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes typewriter {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes underlineExpand {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes glow {
+            from { box-shadow: 0 0 5px rgba(193, 16, 16, 0.2); }
+            to { box-shadow: 0 0 20px rgba(193, 16, 16, 0.4); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes floatElement {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero .container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .footer-bottom-content {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .stats {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+
+        /* Scroll animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Loading animation */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(193, 16, 16, 0.1);
+            border-top: 3px solid #c11010;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <header>
+        <nav class="container">
+            <div class="logo">Trade Wings</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="#contact" class="cta-button">Get Quote</a>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">MAKE YOUR BUSINESS SECURE & CONNECTED</div>
+                <h1>Best <span class="highlight">ICT & Security</span><br>
+                solutions platform<br>
+                <span class="secondary">for your business.</span></h1>
+                <p>We offer comprehensive solutions from simple hardware installations to advanced IT systems with complex security requirements. Making great things possible for SMEs and large enterprises.</p>
+                
+                <div class="stats">
+                    <div class="stat-item">
+                        <div>
+                            <div class="stat-number">15+</div>
+                            <div class="stat-label">Years Experience</div>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div>
+                            <div class="stat-number">500+</div>
+                            <div class="stat-label">Projects Completed</div>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="#services" class="cta-button">Explore Services</a>
+            </div>
+            
+            <div class="hero-visual">
+                <div class="phone-mockup">
+                    <div class="phone-screen">
+                        <h3 style="color: #c11010; margin-bottom: 20px; font-size: 20px;">Trade Wings</h3>
+                        <p style="color: #888; margin-bottom: 20px; font-size: 14px;">ICT Infrastructure</p>
+                        <div style="width: 80%; height: 3px; background: linear-gradient(90deg, #c11010, #c11010); margin: 20px auto; border-radius: 2px;"></div>
+                        <p style="color: #888; margin-bottom: 30px; font-size: 14px;">Security Solutions</p>
+                        <div style="margin-top: 40px; padding: 15px; background: rgba(100, 255, 75, 0.15); border-radius: 15px; border: 1px solid rgba(100, 255, 75, 0.3);">
+                            <span style="color: #c11010; font-weight: bold; font-size: 16px;">Connected Future</span>
+                        </div>
+                        <div style="margin-top: 20px; display: flex; justify-content: space-around;">
+                            <div style="text-align: center;">
+                                <div style="color: #c11010; font-size: 18px; font-weight: bold;">99%</div>
+                                <div style="color: #888; font-size: 12px;">Uptime</div>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="color: #c11010; font-size: 18px; font-weight: bold;">24/7</div>
+                                <div style="color: #888; font-size: 12px;">Support</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="floating-element">ICT</div>
+                <div class="floating-element">IoT</div>
+                <div class="floating-element">AI</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about animate-on-scroll" id="about">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-subtitle">Who we are</div>
+                <h2 class="section-title">Empowering businesses with <span style="color: #c11010;">innovative technology</span></h2>
+                <p class="section-description">With over 15 years of experience, Trade Wings Enterprises has been at the forefront of delivering cutting-edge ICT infrastructure and security solutions across Kenya and East Africa.</p>
+            </div>
+
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Our Story</h3>
+                    <p>Founded with a vision to bridge the technology gap for businesses of all sizes, Trade Wings Enterprises has grown from a small startup to a <span class="highlight-text">trusted technology partner</span> serving over 500 clients across multiple industries.</p>
+                    
+                    <p>We specialize in delivering comprehensive solutions that combine <span class="highlight-text">reliability, innovation, and exceptional service</span>. From simple hardware installations to complex enterprise-grade systems, we make technology work for your business.</p>
+                    
+                    <p>Our team of certified professionals brings decades of combined experience in ICT infrastructure, security systems, and emerging technologies like IoT and AI integration.</p>
+                </div>
+
+                <div class="about-visual">
+                    <div class="about-card">
+                        <h4>Our Mission</h4>
+                        <p>To empower businesses with reliable, secure, and scalable technology solutions that drive growth and innovation.</p>
+                        
+                        <div class="about-features">
+                            <div class="feature-item">
+                                <div class="feature-icon">✓</div>
+                                <span>15+ Years of Industry Experience</span>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">✓</div>
+                                <span>500+ Successful Projects Delivered</span>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">✓</div>
+                                <span>24/7 Professional Support</span>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">✓</div>
+                                <span>100% Customized Solutions</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">🎯</div>
+                    <h4>Excellence</h4>
+                    <p>We deliver nothing but the highest quality solutions, ensuring every project exceeds expectations.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🔒</div>
+                    <h4>Security First</h4>
+                    <p>Your business security is our priority. We implement robust, future-proof security measures.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🚀</div>
+                    <h4>Innovation</h4>
+                    <p>We stay ahead of technology trends to bring you the most advanced solutions available.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🤝</div>
+                    <h4>Partnership</h4>
+                    <p>We build long-term relationships, becoming your trusted technology partner for growth.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services animate-on-scroll" id="services">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-subtitle">Your trusted partner for</div>
+                <h2 class="section-title">technology solutions.</h2>
+                <p class="section-description">We provide professional consultancy services and products across multiple technology domains to help businesses grow and stay secure.</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-number">01</div>
+                    <h3 class="service-title">ICT Infrastructure Development</h3>
+                    <p class="service-description">Network structured cabling, telephony systems (IP-based), multimedia systems, RF cabling, and internet setup installation with complete support and maintenance.</p>
+                    <a href="#" class="learn-more">Learn More →</a>
+                </div>
+
+                <div class="service-card featured">
+                    <div class="service-number">02</div>
+                    <h3 class="service-title">Security Operations Technology</h3>
+                    <p class="service-description">Comprehensive security solutions including CCTV surveillance, access control systems, intrusion detection alarms, and integrated commercial security systems.</p>
+                    <a href="#" class="learn-more">Learn More →</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-number">03</div>
+                    <h3 class="service-title">Internet of Things (IoT)</h3>
+                    <p class="service-description">Smart appliances, security systems, home automation hubs, and IoT solutions powered by advanced analytics to streamline your business operations.</p>
+                    <a href="#" class="learn-more">Learn More →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats-section animate-on-scroll">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Trusted <span style="color: #c11010;">platform</span><br>anytime & anywhere.</h2>
+                <div style="display: flex; justify-content: center; gap: 5px; margin: 20px 0;">
+                    <span style="color: #c11010; font-size: 20px;">★ ★ ★ ★ ★</span>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value">15</div>
+                    <div class="stat-description">Years warranty on network cables</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">24/7</div>
+                    <div class="stat-description">Professional support & maintenance</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">100%</div>
+                    <div class="stat-description">Customized solutions delivery</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">∞</div>
+                    <div class="stat-description">Scalable technology solutions</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact animate-on-scroll" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-subtitle">Ready to get started?</div>
+                <h2 class="section-title">Let's discuss your project</h2>
+                <p class="section-description">Contact us today to learn how Trade Wings Enterprises can transform your business with cutting-edge technology solutions.</p>
+            </div>
+
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <h4>Address</h4>
+                    <p>Rock House Building<br>Sheikh Kurume Street, 4th floor<br>P.O. Box 4066-00506 Nairobi</p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📞</div>
+                    <h4>Phone</h4>
+                    <p>0721628950<br>0111505587</p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">✉️</div>
+                    <h4>Email</h4>
+                    <p>info@tradewings.co.ke<br>www.tradewings.co.ke</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 40px; text-align: center;">
+                <a href="mailto:info@tradewings.co.ke" class="cta-button">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">Trade Wings</div>
+                    <p class="footer-description">Making great things possible through innovative ICT infrastructure, security solutions, and IoT technologies. Your trusted partner for digital transformation.</p>
+                    <div class="social-links">
+                        <a href="mailto:info@tradewings.co.ke" class="social-link">📧</a>
+                        <a href="tel:0721628950" class="social-link">📞</a>
+                        <a href="http://www.tradewings.co.ke" class="social-link">🌐</a>
+                        <a href="#contact" class="social-link">📍</a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4 class="footer-title">Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Network Structured Cabling</a></li>
+                        <li><a href="#">CCTV Surveillance Systems</a></li>
+                        <li><a href="#">Access Control Systems</a></li>
+                        <li><a href="#">IP Telephony Solutions</a></li>
+                        <li><a href="#">Internet Setup & Support</a></li>
+                        <li><a href="#">IoT Solutions</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4 class="footer-title">Solutions</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">ICT Infrastructure</a></li>
+                        <li><a href="#">Security Operations</a></li>
+                        <li><a href="#">Multimedia Systems</a></li>
+                        <li><a href="#">RF Cabling & TV Distribution</a></li>
+                        <li><a href="#">Digital Signage</a></li>
+                        <li><a href="#">Business Music Systems</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4 class="footer-title">Contact Info</h4>
+                    <div class="contact-details">
+                        <div class="contact-detail">
+                            <span class="contact-icon">📍</span>
+                            <div>
+                                <p>Rock House Building</p>
+                                <p>Sheikh Kurume Street, 4th floor</p>
+                                <p>P.O. Box 4066-00506 Nairobi</p>
+                            </div>
+                        </div>
+                        <div class="contact-detail">
+                            <span class="contact-icon">📞</span>
+                            <div>
+                                <p>0721628950</p>
+                                <p>0111505587</p>
+                            </div>
+                        </div>
+                        <div class="contact-detail">
+                            <span class="contact-icon">✉️</span>
+                            <div>
+                                <p>info@tradewings.co.ke</p>
+                                <p>www.tradewings.co.ke</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2025 Trade Wings Enterprises. All rights reserved.</p>
+                    <div class="footer-bottom-links">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                        <a href="#">Support</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Loading animation
+        window.addEventListener('load', function() {
+            const loadingOverlay = document.getElementById('loadingOverlay');
+            setTimeout(() => {
+                loadingOverlay.classList.add('hidden');
+            }, 1000);
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll animations
+        const animateOnScrollElements = document.querySelectorAll('.animate-on-scroll');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        animateOnScrollElements.forEach(el => {
+            observer.observe(el);
+        });
+
+        // Header background change on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(0, 0, 0, 0.95)';
+            } else {
+                header.style.background = 'rgba(0, 0, 0, 0.9)';
+            }
+        });
+
+        // Counter animation for stats
+        function animateCounter(element, target, duration = 2000) {
+            let start = 0;
+            const increment = target / (duration / 16);
+            
+            function updateCounter() {
+                start += increment;
+                if (start < target) {
+                    element.textContent = Math.floor(start);
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    element.textContent = target;
+                }
+            }
+            
+            updateCounter();
+        }
+
+        // Animate counters when they come into view
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statValue = entry.target.querySelector('.stat-value');
+                    const heroStatNumber = entry.target.querySelector('.stat-number');
+                    
+                    if (statValue) {
+                        const targetText = statValue.textContent;
+                        const targetNumber = parseInt(targetText.replace(/[^\d]/g, ''));
+                        if (!isNaN(targetNumber)) {
+                            animateCounter(statValue, targetNumber);
+                        }
+                    }
+                    
+                    if (heroStatNumber) {
+                        const targetText = heroStatNumber.textContent;
+                        const targetNumber = parseInt(targetText.replace(/[^\d]/g, ''));
+                        if (!isNaN(targetNumber)) {
+                            animateCounter(heroStatNumber, targetNumber);
+                        }
+                    }
+                    
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        // Observe stat cards and hero stats
+        document.querySelectorAll('.stat-card, .stat-item').forEach(el => {
+            statsObserver.observe(el);
+        });
+
+        // Parallax effect for floating elements
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.floating-element');
+            const speed = 0.5;
+
+            parallaxElements.forEach((element, index) => {
+                const yPos = -(scrolled * speed * (index + 1) * 0.1);
+                element.style.transform = `translateY(${yPos}px)`;
+            });
+        });
+
+        // Add hover sound effect simulation (visual feedback)
+        document.querySelectorAll('.cta-button, .service-card, .value-card').forEach(element => {
+            element.addEventListener('mouseenter', function() {
+                this.style.filter = 'brightness(1.1)';
+            });
+            
+            element.addEventListener('mouseleave', function() {
+                this.style.filter = 'brightness(1)';
+            });
+        });
+
+        // Mobile menu toggle (for future enhancement)
+        const mobileMenuToggle = document.createElement('div');
+        mobileMenuToggle.innerHTML = '☰';
+        mobileMenuToggle.style.cssText = `
+            display: none;
+            font-size: 24px;
+            color: #c11010;
+            cursor: pointer;
+            padding: 10px;
+        `;
+
+        // Add to navigation for mobile
+        const nav = document.querySelector('nav');
+        nav.appendChild(mobileMenuToggle);
+
+        // Show mobile menu toggle on small screens
+        function checkScreenSize() {
+            if (window.innerWidth <= 768) {
+                mobileMenuToggle.style.display = 'block';
+            } else {
+                mobileMenuToggle.style.display = 'none';
+            }
+        }
+
+        window.addEventListener('resize', checkScreenSize);
+        checkScreenSize();
+    </script>
+</body>
+</html>
