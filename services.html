@@ -1,15 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Services - Trade Wings Enterprises</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Services - Trade Wings Systems</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* Reset and General Styles (from homepage CSS) */
         * {
             margin: 0;
             padding: 0;
@@ -18,9 +14,10 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #000;
+            background: #0a0a0a;
             color: #fff;
             overflow-x: hidden;
+            line-height: 1.6;
         }
 
         .container {
@@ -29,54 +26,66 @@
             padding: 0 20px;
         }
 
-        /* Header Styles (from homepage CSS) */
+        /* Header */
         header {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(10, 10, 10, 0.95);
             backdrop-filter: blur(20px);
             z-index: 1000;
-            transition: all 0.3s ease;
-            animation: slideDown 0.8s ease-out;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 0;
         }
 
         .logo {
-            font-size: 24px;
-            font-weight: 700;
-            color: #c11010;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        .logo:hover {
-            transform: scale(1.05);
-            text-shadow: 0 0 20px rgba(193, 16, 16, 0.5);
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #c11010, #ff4444);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .logo-text {
+            font-size: 20px;
+            font-weight: 700;
+            color: #fff;
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 40px;
         }
 
         .nav-links a {
             color: #fff;
             text-decoration: none;
+            font-weight: 500;
             transition: all 0.3s ease;
             position: relative;
         }
 
+        .nav-links a.active,
         .nav-links a:hover {
             color: #c11010;
-            transform: translateY(-2px);
         }
 
         .nav-links a::after {
@@ -90,329 +99,492 @@
             transition: width 0.3s ease;
         }
 
+        .nav-links a.active::after,
         .nav-links a:hover::after {
             width: 100%;
         }
 
-        .cta-button {
+        .contact-btn {
             background: linear-gradient(135deg, #c11010, #ff4444);
             color: #fff;
             padding: 12px 25px;
             border-radius: 25px;
             text-decoration: none;
+            font-weight: 600;
             transition: all 0.3s ease;
             border: none;
             cursor: pointer;
-            position: relative;
-            overflow: hidden;
         }
 
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s ease;
+        .contact-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(193, 16, 16, 0.4);
         }
 
-        .cta-button:hover::before {
-            left: 100%;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(193, 16, 16, 0.4);
-        }
-
-        /* Hero Section Styles (adapted) */
+        /* Hero Section */
         .hero {
-            min-height: 40vh; /* Reduced height */
+            height: 50vh;
+            background: linear-gradient(135deg, rgba(193, 16, 16, 0.7), rgba(10, 10, 10, 0.8)), 
+                        url('img/service-back.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             display: flex;
             align-items: center;
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            justify-content: center;
+            text-align: center;
             position: relative;
-            overflow: hidden;
-            padding-top: 80px; /* Account for fixed header */
         }
 
-        .hero::before {
+        .hero-content h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff, #c11010);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 14px;
+            opacity: 0.8;
+            margin-top: 20px;
+        }
+
+        .breadcrumb a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .breadcrumb span {
+            color: #c11010;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 100px 0;
+        }
+
+        .services-intro {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-bottom: 100px;
+        }
+
+        .intro-content h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .intro-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        .learn-more-btn {
+            background: linear-gradient(135deg, #c11010, #ff4444);
+            color: #fff;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .learn-more-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(193, 16, 16, 0.4);
+        }
+
+        .intro-image {
+            background: linear-gradient(135deg, rgba(193, 16, 16, 0.1), rgba(255, 255, 255, 0.05));
+            border-radius: 20px;
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px;
+            position: relative;
+            overflow: hidden;
+            background-image: url('img/service-intro.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .intro-image::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(circle at 70% 30%, rgba(193, 16, 16, 0.1) 0%, transparent 50%);
-            animation: pulse 4s ease-in-out infinite;
+            background: linear-gradient(135deg, rgba(193, 16, 16, 0.3), rgba(0, 0, 0, 0.4));
+            z-index: 1;
         }
 
-        .hero .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-            color: #fff;
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            color: #ccc;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* Section Styles (from homepage CSS) */
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-            animation: fadeInUp 0.8s ease-out;
-        }
-
-        .section-subtitle {
-            color: #c11010;
-            font-size: 0.9rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 1rem;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            line-height: 1.3;
-            color: #fff;
-        }
-
-        .section-description {
-            font-size: 1.1rem;
-            color: #ccc;
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.6;
-        }
-
-        /* Services Overview Section */
-        .services-overview {
-            padding: 60px 0;
-            background: linear-gradient(135deg, #111 0%, #000 100%);
-        }
-
+        /* Services Grid */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 3rem;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-bottom: 100px;
         }
 
         .service-card {
-            background: rgba(255, 255, 255, 0.05);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(193, 16, 16, 0.05));
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px;
-            padding: 30px;
+            padding: 40px 30px;
+            text-align: center;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            animation: fadeInUp 0.8s ease-out;
         }
 
         .service-card::before {
             content: '';
             position: absolute;
             top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(193, 16, 16, 0.1), transparent);
-            transition: left 0.5s ease;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #c11010, #ff4444);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
         }
 
         .service-card:hover::before {
-            left: 100%;
+            transform: scaleX(1);
         }
 
         .service-card:hover {
-            transform: translateY(-15px);
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
             border-color: rgba(193, 16, 16, 0.3);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
 
         .service-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #c11010, #ff4444);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-size: 2rem;
-            margin-bottom: 15px;
-            color: #c11010;
+            margin: 0 auto 25px;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(5deg);
         }
 
         .service-card h3 {
-            color: #fff;
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 600;
+            margin-bottom: 15px;
+            color: #fff;
         }
 
         .service-card p {
-            color: #ccc;
+            opacity: 0.8;
             line-height: 1.6;
         }
 
-        /* Service Details Section */
-        .service-details {
-            padding: 60px 0;
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+        /* How We Work Section */
+        .how-we-work {
+            background: linear-gradient(135deg, rgba(193, 16, 16, 0.05), rgba(255, 255, 255, 0.02));
+            border-radius: 30px;
+            padding: 80px 60px;
+            margin-bottom: 100px;
+            position: relative;
+            overflow: hidden;
         }
 
-        .detail-section {
+        .how-we-work::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(193, 16, 16, 0.1) 0%, transparent 70%);
+            transform: rotate(45deg);
+        }
+
+        .work-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .work-video {
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 20px;
+            aspect-ratio: 16/9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background-image: url('img/howwework.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .work-video::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(193, 16, 16, 0.3), rgba(0, 0, 0, 0.5));
+            z-index: 1;
+        }
+
+        .play-button {
+            display: none;
+        }
+
+        .work-details h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: #fff;
+        }
+
+        .work-details p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            opacity: 0.9;
             margin-bottom: 40px;
         }
 
-        .detail-section h2 {
-            color: #fff;
-            margin-bottom: 1.5rem;
-            font-size: 2rem;
-            font-weight: 700;
-        }
-
-        .detail-section p {
-            color: #ccc;
-            line-height: 1.6;
-            margin-bottom: 2rem;
-        }
-
-        .three-pronged {
+        .work-features {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
         }
 
-        .prong-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            padding: 2rem;
-            text-align: center;
-            color: #fff;
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 0;
         }
 
-        .prong-card h5 {
-            color: #c11010;
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-
-        .subsection {
-            margin: 2rem 0;
-            padding: 1.5rem;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            border-left: 4px solid #c11010;
-            color: #ccc;
-        }
-
-        .subsection h4 {
-            color: #fff;
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-            font-weight: 600;
-        }
-
-        .feature-list {
-            list-style: none;
-            margin: 1rem 0;
-        }
-
-        .feature-list li {
-            padding: 0.5rem 0;
-            position: relative;
-            padding-left: 1.5rem;
-        }
-
-        .feature-list li::before {
+        .feature-item::before {
             content: '✓';
-            position: absolute;
-            left: 0;
             color: #c11010;
             font-weight: bold;
-        }
-
-        /* Business Value Proposition */
-        .value-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .value-item {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 1.5rem;
-            border-radius: 10px;
-            border-left: 4px solid #c11010;
-            color: #ccc;
-        }
-
-        .value-item h5 {
-            color: #fff;
-            margin-bottom: 0.5rem;
             font-size: 1.2rem;
-            font-weight: 600;
         }
 
-        /* CTA Section (from homepage CSS) */
-        .cta-section {
-            background: linear-gradient(135deg, #c11010 0%, #ff4444 100%);
-            color: white;
+        /* Client Logos */
+        .client-logos {
             text-align: center;
-            padding: 4rem 0;
-            margin: 2rem 0;
+            margin-bottom: 100px;
+        }
+
+        .logos-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .client-logo {
+            height: 60px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+            opacity: 0.7;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .client-logo:hover {
+            opacity: 1;
+            background: rgba(193, 16, 16, 0.1);
+            border-color: rgba(193, 16, 16, 0.3);
+        }
+
+        /* Why Choose Us Section */
+        .why-choose-us {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.02), rgba(193, 16, 16, 0.03));
+            border-radius: 30px;
+            padding: 80px 60px;
+            margin-bottom: 100px;
+            text-align: center;
+        }
+
+        .why-choose-us h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .why-choose-us .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            margin-bottom: 60px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .benefit-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px;
+            padding: 40px 30px;
+            transition: all 0.3s ease;
+        }
+
+        .benefit-item:hover {
+            transform: translateY(-5px);
+            border-color: rgba(193, 16, 16, 0.3);
+            background: rgba(193, 16, 16, 0.05);
+        }
+
+        .benefit-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #c11010, #ff4444);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin: 0 auto 20px;
+        }
+
+        .benefit-item h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .benefit-item p {
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, rgba(193, 16, 16, 0.9), rgba(255, 68, 68, 0.8)), 
+                        url('img/service-cta.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            border-radius: 30px;
+            padding: 80px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="0.5" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="1.5" fill="rgba(255,255,255,0.1)"/></svg>');
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
         }
 
         .cta-section h2 {
             font-size: 2.5rem;
-            margin-bottom: 1rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #fff;
         }
 
-        /* Footer (from homepage CSS) */
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .cta-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .cta-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
         footer {
-            background: #000;
-            padding: 60px 0 20px;
+            background: #050505;
+            padding: 60px 0 30px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .footer-content {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 40px;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 60px;
             margin-bottom: 40px;
         }
 
         .footer-logo {
-            font-size: 24px;
-            font-weight: 700;
-            color: #c11010;
-            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
         }
 
         .footer-description {
-            color: #ccc;
+            opacity: 0.8;
             line-height: 1.6;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
 
         .social-links {
@@ -421,24 +593,27 @@
         }
 
         .social-link {
-            display: inline-block;
-            padding: 10px;
+            width: 40px;
+            height: 40px;
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            transition: all 0.3s ease;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-decoration: none;
+            transition: all 0.3s ease;
         }
 
         .social-link:hover {
-            background: #c11010;
-            transform: translateY(-3px);
+            background: rgba(193, 16, 16, 0.2);
+            transform: translateY(-2px);
         }
 
-        .footer-title {
-            color: #fff;
-            font-size: 18px;
+        .footer-section h3 {
+            font-size: 1.3rem;
             font-weight: 600;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            color: #fff;
         }
 
         .footer-links {
@@ -446,635 +621,319 @@
         }
 
         .footer-links li {
-            margin-bottom: 8px;
+            margin-bottom: 12px;
         }
 
         .footer-links a {
-            color: #ccc;
+            color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .footer-links a:hover {
             color: #c11010;
         }
 
-        .contact-details {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
+        .contact-info {
+            list-style: none;
         }
 
-        .contact-detail {
+        .contact-info li {
             display: flex;
             align-items: flex-start;
             gap: 10px;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
         }
 
-        .contact-detail .contact-icon {
-            margin-top: 2px;
-        }
-
-        .contact-detail p {
-            color: #ccc;
-            margin: 0;
-            line-height: 1.4;
+        .contact-info .icon {
+            opacity: 0.7;
         }
 
         .footer-bottom {
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 20px;
+            padding-top: 30px;
+            text-align: center;
+            opacity: 0.6;
         }
 
-        .footer-bottom-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: #888;
-            font-size: 14px;
-        }
-
-        .footer-bottom-links {
-            display: flex;
-            gap: 20px;
-        }
-
-        .footer-bottom-links a {
-            color: #888;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-bottom-links a:hover {
-            color: #c11010;
-        }
-
-        /* Animations (from homepage CSS) */
-        @keyframes slideDown {
-            from {
-                transform: translateY(-100%);
-                opacity: 0;
-            }
-
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        @keyframes fadeInLeft {
-            from {
-                transform: translateX(-50px);
-                opacity: 0;
-            }
-
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-
-        @keyframes fadeInRight {
-            from {
-                transform: translateX(50px);
-                opacity: 0;
-            }
-
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                transform: translateY(30px);
-                opacity: 0;
-            }
-
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        @keyframes slideInLeft {
-            from {
-                transform: translateX(-20px);
-                opacity: 0;
-            }
-
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-
-        @keyframes typewriter {
-            from {
-                width: 0;
-            }
-
-            to {
-                width: 100%;
-            }
-        }
-
-        @keyframes underlineExpand {
-            from {
-                width: 0;
-            }
-
-            to {
-                width: 100%;
-            }
-        }
-
-        @keyframes glow {
-            from {
-                box-shadow: 0 0 5px rgba(193, 16, 16, 0.2);
-            }
-
-            to {
-                box-shadow: 0 0 20px rgba(193, 16, 16, 0.4);
-            }
-        }
-
-        @keyframes pulse {
-            0%,
-            100% {
-                transform: scale(1);
-                opacity: 1;
-            }
-
-            50% {
-                transform: scale(1.05);
-                opacity: 0.8;
-            }
-        }
-
-        @keyframes float {
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-
-        @keyframes floatElement {
-            0%,
-            100% {
-                transform: translateY(0) rotate(0deg);
-            }
-
-            50% {
-                transform: translateY(-20px) rotate(5deg);
-            }
-        }
-
-        @keyframes shimmer {
-            0% {
-                left: -100%;
-            }
-
-            100% {
-                left: 100%;
-            }
-        }
-
-        /* Responsive Design (from homepage CSS) */
+        /* Responsive */
         @media (max-width: 768px) {
-            .hero .container {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-                text-align: center;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
             .nav-links {
                 display: none;
             }
 
-            .about-content {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .services-intro {
                 grid-template-columns: 1fr;
                 gap: 40px;
             }
 
-            .values-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 20px;
+            .work-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .work-features {
+                grid-template-columns: 1fr;
             }
 
             .services-grid {
                 grid-template-columns: 1fr;
-                gap: 20px;
             }
 
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 20px;
-            }
-
-            .contact-info {
+            .benefits-grid {
                 grid-template-columns: 1fr;
-                gap: 20px;
             }
 
             .footer-content {
                 grid-template-columns: 1fr;
-                gap: 30px;
+                gap: 40px;
             }
 
-            .footer-bottom-content {
-                flex-direction: column;
-                gap: 15px;
-                text-align: center;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .values-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .stats {
-                flex-direction: column;
-                gap: 1rem;
-                text-align: center;
-            }
-        }
-
-        /* Scroll animations */
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
-        }
-
-        .animate-on-scroll.animated {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Loading animation */
-        .loading-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.5s ease;
-        }
-
-        .loading-overlay.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .loading-spinner {
-            width: 50px;
-            height: 50px;
-            border: 3px solid rgba(193, 16, 16, 0.1);
-            border-top: 3px solid #c11010;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
+            .how-we-work,
+            .cta-section {
+                padding: 40px 30px;
             }
         }
     </style>
 </head>
-
 <body>
     <header>
         <nav class="container">
-            <div class="logo">Trade Wings Enterprises</div>
+            <div class="logo">
+                <div class="logo-icon">TW</div>
+                <div class="logo-text">TRADE WINGS</div>
+            </div>
             <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="services.html" class="active">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
-            <button class="cta-button">Get Started</button>
+            <a href="#contact" class="contact-btn">Contact Us</a>
         </nav>
     </header>
 
     <section class="hero">
-        <div class="container">
-            <h1>Our Services</h1>
-            <p>Comprehensive ICT solutions and security technologies to drive your business forward</p>
+        <div class="hero-content">
+            <h1>Services</h1>
+            <div class="breadcrumb">
+                <a href="#home">Home</a>
+                <span>/</span>
+                <span>Services</span>
+            </div>
         </div>
     </section>
 
-    <section class="services-overview">
+    <main class="main-content">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">What We Offer</h2>
-                <p class="section-description">Trade Wings Enterprises provides professional consultancy services and
-                    products across multiple technology domains, ensuring your business stays competitive in today's
-                    digital landscape.</p>
-            </div>
+            <section class="services-intro">
+                <div class="intro-content">
+                    <p style="color: #c11010; font-weight: 600; margin-bottom: 10px;">Our Services</p>
+                    <h2>Making Great Things Possible</h2>
+                    <p>At Trade Wings Systems Ltd, we offer comprehensive solutions to SMEs and large companies ranging from simple hardware and software installations to advanced information technology systems with complex security and firewall requirements. We provide the right solutions to meet your current IT needs and strategic advantages for the future.</p>
+                    <a href="#contact" class="learn-more-btn">Learn More</a>
+                </div>
+                <div class="intro-image">
+                    <!-- Placeholder for service image -->
+                </div>
+            </section>
 
-            <div class="services-grid">
+            <section class="services-grid">
                 <div class="service-card">
-                    <i class="service-icon">🌐</i>
+                    <div class="service-icon">🌐</div>
                     <h3>ICT Infrastructure</h3>
-                    <p>Complete network solutions including structured cabling, telephony systems, multimedia
-                        installations, and internet technologies to build robust IT foundations.</p>
+                    <p>Network structured cabling, telephony systems, multimedia installations, and complete infrastructure development with 15-year warranty coverage.</p>
                 </div>
 
                 <div class="service-card">
-                    <i class="service-icon">🛡️</i>
-                    <h3>Security Technologies</h3>
-                    <p>Advanced security solutions featuring CCTV surveillance, access control systems, intrusion
-                        detection, and comprehensive security consultation services.</p>
+                    <div class="service-icon">🔒</div>
+                    <h3>Security Systems</h3>
+                    <p>CCTV surveillance, access control, intrusion detection systems, and comprehensive security infrastructure for complete protection.</p>
                 </div>
 
                 <div class="service-card">
-                    <i class="service-icon">💻</i>
-                    <h3>IT Equipment Supply</h3>
-                    <p>Premium computers, laptops, printers, networking equipment, servers, and accessories from
-                        trusted manufacturers to meet all your hardware needs.</p>
+                    <div class="service-icon">📡</div>
+                    <h3>Network Solutions</h3>
+                    <p>Wireless hotspots, internet technologies, RF cabling for TV distribution, and complete networking infrastructure setup.</p>
                 </div>
 
                 <div class="service-card">
-                    <i class="service-icon">🏠</i>
-                    <h3>Internet of Things (IoT)</h3>
-                    <p>Smart home and business solutions including connected appliances, intelligent security systems,
-                        and automated control systems for modern living.</p>
+                    <div class="service-icon">🏠</div>
+                    <h3>IoT Solutions</h3>
+                    <p>Smart home systems, connected appliances, intelligent security devices, and automated control systems for modern living.</p>
                 </div>
-            </div>
+            </section>
+
+            <section class="how-we-work">
+                <div class="work-content">
+                    <div class="work-video">
+                        <!-- Background image will be added via CSS -->
+                    </div>
+                    <div class="work-details">
+                        <h2>How We Work</h2>
+                        <p>Our three-pronged approach ensures successful project delivery from conception to completion. We design, build, and construct comprehensive ICT solutions tailored to your specific business requirements.</p>
+                        <div class="work-features">
+                            <div class="feature-item">Design & Planning</div>
+                            <div class="feature-item">Professional Installation</div>
+                            <div class="feature-item">Quality Assurance</div>
+                            <div class="feature-item">Ongoing Support</div>
+                            <div class="feature-item">15-Year Warranty</div>
+                            <div class="feature-item">24/7 Monitoring</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="why-choose-us">
+                <h2>Why Choose Trade Wings Systems?</h2>
+                <p class="subtitle">We bring years of expertise, cutting-edge technology, and unwavering commitment to deliver solutions that transform your business operations and give you a competitive edge.</p>
+                
+                <div class="benefits-grid">
+                    <div class="benefit-item">
+                        <div class="benefit-icon">⚡</div>
+                        <h3>15-Year Warranty</h3>
+                        <p>All our network cabling installations come with an industry-leading 15-year warranty, ensuring long-term reliability and peace of mind.</p>
+                    </div>
+                    
+                    <div class="benefit-item">
+                        <div class="benefit-icon">🎯</div>
+                        <h3>Proven Expertise</h3>
+                        <p>Multi-disciplinary team with high-level skills and proven consultation, project management, and solution configuration experience.</p>
+                    </div>
+                    
+                    <div class="benefit-item">
+                        <div class="benefit-icon">🛡️</div>
+                        <h3>Complete Security</h3>
+                        <p>From CCTV surveillance to access control and intrusion detection, we provide comprehensive security solutions tailored to your needs.</p>
+                    </div>
+                    
+                    <div class="benefit-item">
+                        <div class="benefit-icon">🚀</div>
+                        <h3>Future-Ready Technology</h3>
+                        <p>We implement leading technologies from respected vendors, ensuring your infrastructure is scalable and ready for tomorrow's challenges.</p>
+                    </div>
+                    
+                    <div class="benefit-item">
+                        <div class="benefit-icon">🤝</div>
+                        <h3>Trusted Partnership</h3>
+                        <p>We become an extension of your business, understanding your environment and serving as your trusted technology advisor.</p>
+                    </div>
+                    
+                    <div class="benefit-item">
+                        <div class="benefit-icon">💰</div>
+                        <h3>Cost-Effective Solutions</h3>
+                        <p>Our customized solutions offer the best value for money, reduce cost of ownership, and optimize operations within your budget.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="cta-section">
+                <div class="cta-content">
+                    <p style="font-size: 1rem; margin-bottom: 15px;">Hire Us Now</p>
+                    <h2>We Are Always Ready To Take Your Perfect Project</h2>
+                    <a href="#contact" class="cta-btn">Get Started</a>
+                </div>
+            </section>
         </div>
-    </section>
-
-    <section class="service-details">
-        <div class="container">
-            <div class="detail-section">
-                <h2>ICT Infrastructure Development & Support</h2>
-                <p>We supply, configure, implement, support and maintain turnkey and modular enterprise technologies,
-                    ensuring your data is stored, protected and accessible at any time by the right people.</p>
-
-                <div class="three-pronged">
-                    <div class="prong-card">
-                        <h5>Design</h5>
-                        <p>Our multi-disciplinary team offers comprehensive design services including network
-                            infrastructure (LAN and WAN), IP telephony, power and cooling requirements, and patch
-                            rooms.</p>
-                    </div>
-                    <div class="prong-card">
-                        <h5>Build</h5>
-                        <p>Project specialists ensure construction projects are carefully planned, managed and executed
-                            from start to finish with precision and expertise.</p>
-                    </div>
-                    <div class="prong-card">
-                        <h5>Construct</h5>
-                        <p>Phased construction approach including data center construction, walling, flooring, cabling,
-                            electrical reticulation and integrated system testing.</p>
-                    </div>
-                </div>
-
-                <div class="subsection">
-                    <h4>Network Structured Cabling</h4>
-                    <p>Professional installation of computer network wiring with up to 15-year warranty periods. Our
-                        qualified staff surveys and advises on the best cable choices based on distances and
-                        requirements.</p>
-                </div>
-
-                <div class="subsection">
-                    <h4>Telephony Systems</h4>
-                    <p>Complete phone wiring solutions for both digital and analog systems:</p>
-                    <ul class="feature-list">
-                        <li><strong>Analog Systems:</strong> Category 5E/6E cable installations with modular sockets
-                            and central patch panels</li>
-                        <li><strong>Digital IP Telephony:</strong> AVVID (Architecture for Voice, Video and Integrated
-                            Data) solutions for cost-effective communication</li>
-                    </ul>
-                </div>
-
-                <div class="subsection">
-                    <h4>RF Cabling & TV Distribution</h4>
-                    <p>Professional installation of coaxial infrastructure using RG59, RG6, and RG11 cables for digital
-                        satellite and local channel TV distribution with signal optimization and amplification.</p>
-                </div>
-
-                <div class="subsection">
-                    <h4>Multimedia Systems</h4>
-                    <ul class="feature-list">
-                        <li>Business Music Systems (Piped Music) - Four-zone integrated systems with 400W power
-                            distribution</li>
-                        <li>LCD Projectors, Screens and Controls - Complete audio-visual installations</li>
-                        <li>Digital Signage - Modern communication solutions for various locations</li>
-                    </ul>
-                </div>
-
-                <div class="subsection">
-                    <h4>Internet Technologies ("Hot Spots")</h4>
-                    <p>Specialized wireless networking solutions including free hotspots and ticketing systems for
-                        controlled access with time-based or usage-based limits.</p>
-                </div>
-            </div>
-
-            <div class="detail-section">
-                <h2>Security Operations Technologies</h2>
-                <p>Comprehensive security solutions leveraging trained professionals, data analytics, and cutting-edge
-                    technology to deploy smarter, more effective security programs.</p>
-
-                <div class="subsection">
-                    <h4>Surveillance CCTV Systems</h4>
-                    <p>Total dedication in designing and supplying surveillance systems with the latest technology from
-                        world-leading manufacturers:</p>
-                    <ul class="feature-list">
-                        <li>Digital IP CCTV, Analogue, and Hybrid architectures</li>
-                        <li>Open system architecture - simple and inexpensive to expand</li>
-                        <li>Full range of control devices (passive and interactive)</li>
-                        <li>Comprehensive client security staff training</li>
-                        <li>Complete design, supply, installation, and support services</li>
-                    </ul>
-                </div>
-
-                <div class="subsection">
-                    <h4>Access Control Systems</h4>
-                    <p>Advanced access control solutions from simple standalone single door controllers to complex
-                        networked systems integrated with 3rd party security products. We handle credential selection,
-                        reader configuration, and system implementation.</p>
-                </div>
-
-                <div class="subsection">
-                    <h4>Intrusion Detection Systems (Alarms)</h4>
-                    <p>Reliable motion detector alarm systems perfect for homes, businesses, and offices featuring:</p>
-                    <ul class="feature-list">
-                        <li>Control Panel and Key Touchpad</li>
-                        <li>Motion Detector and Door/Window Sensors</li>
-                        <li>Glass Break Detector and Temperature Sensor</li>
-                        <li>120dB Siren and Speaker System</li>
-                        <li>Power Supply with Backup Battery</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="detail-section">
-                <h2>Internet of Things (IoT)</h2>
-                <p>Propel your business into the connected future with IoT solutions powered by advanced analytics.
-                    Streamline operations, increase predictability, and lower total cost of ownership.</p>
-
-                <div class="subsection">
-                    <h4>Smart Home Solutions</h4>
-                    <ul class="feature-list">
-                        <li>Smart appliances (stoves, refrigerators, washers, dryers, coffee machines)</li>
-                        <li>Smart security systems, locks, and doorbells</li>
-                        <li>Smart home hubs controlling lighting, heating, and cooling</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="detail-section">
-                <h2>Business Value Proposition</h2>
-                <div class="value-grid">
-                    <div class="value-item">
-                        <h5>Technical Expertise</h5>
-                        <p>High-skilled professionals to implement successful projects</p>
-                    </div>
-                    <div class="value-item">
-                        <h5>Implementation Expertise</h5>
-                        <p>Proven consultation and project management delivered on time and budget</p>
-                    </div>
-                    <div class="value-item">
-                        <h5>Professional Support</h5>
-                        <p>Maintenance services driven by strict service level agreements</p>
-                    </div>
-                    <div class="value-item">
-                        <h5>Proven Approach</h5>
-                        <p>Customized solutions delivering business value and peace of mind</p>
-                    </div>
-                    <div class="value-item">
-                        <h5>Leading Technology</h5>
-                        <p>Enable growth, reduce costs, and optimize operations</p>
-                    </div>
-                    <div class="value-item">
-                        <h5>Trusted Relationships</h5>
-                        <p>Understanding your environment as a trusted advisor</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="cta-section">
-        <h2>Ready to Transform Your Business?</h2>
-        <p>Let Trade Wings Enterprises provide the right solutions to meet your current IT needs and strategic future
-            requirements.</p>
-        <a href="#contact" class="cta-button">Get Started Today</a>
-    </section>
+    </main>
 
     <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <div class="footer-logo">Trade Wings</div>
+                    <div class="footer-logo">
+                        <div class="logo-icon">TW</div>
+                        <div class="logo-text">TRADE WINGS</div>
+                    </div>
                     <p class="footer-description">Making great things possible through innovative ICT infrastructure, security solutions, and IoT technologies. Your trusted partner for digital transformation.</p>
                     <div class="social-links">
-                        <a href="mailto:info@tradewings.co.ke" class="social-link">📧</a>
+                        <a href="mailto:info@tradewings.co.ke" class="social-link">✉</a>
                         <a href="tel:0721628950" class="social-link">📞</a>
                         <a href="http://www.tradewings.co.ke" class="social-link">🌐</a>
-                        <a href="#contact" class="social-link">📍</a>
                     </div>
                 </div>
 
                 <div class="footer-section">
-                    <h4 class="footer-title">Services</h4>
+                    <h3>Our Services</h3>
                     <ul class="footer-links">
-                        <li><a href="#">Network Structured Cabling</a></li>
-                        <li><a href="#">CCTV Surveillance Systems</a></li>
-                        <li><a href="#">Access Control Systems</a></li>
-                        <li><a href="#">IP Telephony Solutions</a></li>
-                        <li><a href="#">Internet Setup & Support</a></li>
-                        <li><a href="#">IoT Solutions</a></li>
+                        <li><a href="#services">ICT Infrastructure</a></li>
+                        <li><a href="#services">Security Systems</a></li>
+                        <li><a href="#services">Network Solutions</a></li>
+                        <li><a href="#services">IoT Solutions</a></li>
+                        <li><a href="#services">Multimedia Systems</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-section">
-                    <h4 class="footer-title">Solutions</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">ICT Infrastructure</a></li>
-                        <li><a href="#">Security Operations</a></li>
-                        <li><a href="#">Multimedia Systems</a></li>
-                        <li><a href="#">RF Cabling & TV Distribution</a></li>
-                        <li><a href="#">Digital Signage</a></li>
-                        <li><a href="#">Business Music Systems</a></li>
+                    <h3>Get In Touch</h3>
+                    <ul class="contact-info">
+                        <li><span class="icon">📍</span> Millennium Business park. Langata Road. Karen</li>
+                        <li><span class="icon">📞</span> 0721628950 / 0111505587</li>
+                        <li><span class="icon">✉</span> info@tradewings.co.ke</li>
+                        <li><span class="icon">🌐</span> www.tradewings.co.ke</li>
                     </ul>
-                </div>
-
-                <div class="footer-section">
-                    <h4 class="footer-title">Contact Info</h4>
-                    <div class="contact-details">
-                        <div class="contact-detail">
-                            <span class="contact-icon">📍</span>
-                            <div>
-                                <p>Millennium Business park</p>
-                                <p>Langata Road. Karen</p>
-                                <p>P.O. Box 4066-00506 Nairobi</p>
-                            </div>
-                        </div>
-                        <div class="contact-detail">
-                            <span class="contact-icon">📞</span>
-                            <div>
-                                <p>0721628950</p>
-                                <p>0111505587</p>
-                            </div>
-                        </div>
-                        <div class="contact-detail">
-                            <span class="contact-icon">✉️</span>
-                            <div>
-                                <p>info@tradewings.co.ke</p>
-                                <p>www.tradewings.co.ke</p>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
 
             <div class="footer-bottom">
-                <div class="footer-bottom-content">
-                    <p>&copy; 2025 Trade Wings Systems Ltd. All rights reserved.</p>
-                    <div class="footer-bottom-links">
-                        <a href="#">Privacy Policy</a>
-                        <a href="#">Terms of Service</a>
-                        <a href="#">Support</a>
-                    </div>
-                </div>
+                <p>&copy; 2025 Trade Wings Systems Ltd. All rights reserved.</p>
             </div>
         </div>
     </footer>
-</body>
 
+    <script>
+        // Add smooth scrolling and animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate service cards on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe service cards
+            document.querySelectorAll('.service-card').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'all 0.6s ease';
+                observer.observe(card);
+            });
+
+            // Play button interaction - removed since we're using images now
+            // document.querySelector('.play-button').addEventListener('click', function() {
+            //     this.style.transform = 'scale(0.9)';
+            //     setTimeout(() => {
+            //         this.style.transform = 'scale(1.1)';
+            //     }, 150);
+            // });
+
+            // Smooth scrolling for navigation
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
 </html>

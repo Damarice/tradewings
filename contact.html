@@ -4,77 +4,84 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - Trade Wings Enterprises</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #000;
+            background: #0a0a0a;
             color: #fff;
             overflow-x: hidden;
+            line-height: 1.6;
         }
-
+        
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-
-        /* Header Styles */
+        
+        /* Header */
         header {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(10, 10, 10, 0.95);
             backdrop-filter: blur(20px);
             z-index: 1000;
-            transition: all 0.3s ease;
-            animation: slideDown 0.8s ease-out;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
-
+        
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 0;
         }
-
+        
         .logo {
-            font-size: 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo-img { /* Added style for the image logo */
+            height: 40px; /* Adjust as needed */
+            width: auto;
+            display: block;
+        }
+
+        /* Removed .logo-icon as the image replaces this visual element */
+        
+        .logo-text { /* Kept this if you still want text next to the image, or remove it */
+            font-size: 20px;
             font-weight: 700;
-            color: #c11010;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            color: #fff;
         }
-
-        .logo:hover {
-            transform: scale(1.05);
-            text-shadow: 0 0 20px rgba(193, 16, 16, 0.5);
-        }
-
+        
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 40px;
         }
-
+        
         .nav-links a {
             color: #fff;
             text-decoration: none;
+            font-weight: 500;
             transition: all 0.3s ease;
             position: relative;
         }
-
+        
+        .nav-links a.active,
         .nav-links a:hover {
             color: #c11010;
-            transform: translateY(-2px);
         }
-
+        
         .nav-links a::after {
             content: '';
             position: absolute;
@@ -85,754 +92,578 @@
             background: #c11010;
             transition: width 0.3s ease;
         }
-
+        
+        .nav-links a.active::after,
         .nav-links a:hover::after {
             width: 100%;
         }
-
-        .nav-links a.active {
-            color: #c11010;
-        }
-
-        .nav-links a.active::after {
-            width: 100%;
-        }
-
-        .cta-button {
+        
+        .contact-btn {
             background: linear-gradient(135deg, #c11010, #ff4444);
             color: #fff;
             padding: 12px 25px;
             border-radius: 25px;
             text-decoration: none;
+            font-weight: 600;
             transition: all 0.3s ease;
             border: none;
             cursor: pointer;
-            position: relative;
-            overflow: hidden;
         }
-
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s ease;
+        
+        .contact-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(193, 16, 16, 0.4);
         }
-
-        .cta-button:hover::before {
-            left: 100%;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(193, 16, 16, 0.4);
-        }
-
-        /* Contact Hero Section */
-        .contact-hero {
-            padding: 150px 0 80px;
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
-            position: relative;
-            overflow: hidden;
+        
+        /* Hero Section */
+        .hero {
+            /* UPDATED: Added background image with black overlay */
+            background:
+                linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), /* Black overlay for text readability */
+                url('img/contact-back.jpg') no-repeat center center / cover, /* Your hero background image */
+                radial-gradient(circle at 20% 80%, rgba(193, 16, 16, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 68, 68, 0.2) 0%, transparent 50%),
+                #0a0a0a; /* Fallback background color */
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
+            margin-top: 70px;
+            position: relative;
+            overflow: hidden;
         }
-
-        .contact-hero::before {
+        
+        .hero::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(circle at 50% 30%, rgba(193, 16, 16, 0.1) 0%, transparent 50%);
-            animation: pulse 4s ease-in-out infinite;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle fill="rgba(193,16,16,0.1)" cx="20" cy="20" r="2"/><circle fill="rgba(255,68,68,0.1)" cx="80" cy="40" r="1"/><circle fill="rgba(193,16,16,0.1)" cx="40" cy="80" r="1.5"/></svg>');
+            animation: float 20s ease-in-out infinite;
         }
-
-        .hero-badge {
-            display: inline-block;
-            background: rgba(193, 16, 16, 0.1);
-            color: #c11010;
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 2rem;
-            border: 1px solid rgba(193, 16, 16, 0.3);
-            animation: glow 2s ease-in-out infinite alternate;
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
         }
-
-        .contact-hero h1 {
-            font-size: 3.5rem;
+        
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
             font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 1.5rem;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        .highlight {
-            color: #c11010;
+            background: linear-gradient(135deg, #fff, #c11010);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             position: relative;
+            z-index: 1;
         }
-
-        .highlight::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, #c11010, #ff4444);
-            animation: underlineExpand 1s ease-out 1.5s both;
-        }
-
-        .contact-hero p {
+        
+        .breadcrumb {
+            color: #cccccc;
             font-size: 1.1rem;
-            line-height: 1.6;
-            color: #ccc;
-            max-width: 600px;
-            margin: 0 auto 2rem;
-            animation: fadeInUp 1s ease-out 0.5s both;
+            position: relative;
+            z-index: 1;
         }
-
-        /* Contact Main Section */
-        .contact-main {
-            padding: 100px 0;
-            background: linear-gradient(135deg, #111 0%, #000 100%);
+        
+        .breadcrumb a {
+            color: #c11010;
+            text-decoration: none;
+            transition: color 0.3s ease;
         }
-
-        .contact-content {
+        
+        .breadcrumb a:hover {
+            color: #ff4444;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding: 80px 0;
+            background: #0a0a0a;
+        }
+        
+        .content-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 80px;
+            gap: 60px;
             align-items: start;
         }
-
-        /* Contact Form */
+        
         .contact-form-section {
-            animation: fadeInLeft 1s ease-out;
-        }
-
-        .contact-form-section h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: #fff;
-        }
-
-        .contact-form-section .subtitle {
-            color: #ccc;
-            margin-bottom: 3rem;
-            line-height: 1.6;
-        }
-
-        .contact-form {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
             padding: 40px;
-            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            backdrop-filter: blur(20px);
+            position: relative;
+            overflow: hidden;
         }
-
+        
+        .contact-form-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(193, 16, 16, 0.05), rgba(255, 68, 68, 0.05));
+            pointer-events: none;
+        }
+        
+        .section-title {
+            color: #c11010;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .form-title {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            font-weight: 700;
+            color: #fff;
+            position: relative;
+            z-index: 1;
+        }
+        
         .form-group {
             margin-bottom: 25px;
+            position: relative;
+            z-index: 1;
         }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            color: #fff;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
+        
+        .form-input {
             width: 100%;
-            padding: 15px;
+            padding: 18px 20px;
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            color: #fff;
+            border-radius: 12px;
+            color: #ffffff;
             font-size: 16px;
+            font-weight: 500;
             transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
         }
-
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
+        
+        .form-input:focus {
             outline: none;
             border-color: #c11010;
+            background: rgba(255, 255, 255, 0.08);
             box-shadow: 0 0 0 3px rgba(193, 16, 16, 0.1);
         }
-
-        .form-group textarea {
-            min-height: 120px;
+        
+        .form-input::placeholder {
+            color: #999;
+            font-weight: 400;
+        }
+        
+        .form-textarea {
+            height: 120px;
             resize: vertical;
         }
-
-        .form-submit {
+        
+        .submit-btn {
             background: linear-gradient(135deg, #c11010, #ff4444);
             color: #fff;
-            padding: 15px 40px;
+            padding: 18px 35px;
             border: none;
-            border-radius: 25px;
+            border-radius: 12px;
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
             width: 100%;
+            font-family: 'Inter', sans-serif;
         }
-
-        .form-submit::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s ease;
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(193, 16, 16, 0.4);
         }
-
-        .form-submit:hover::before {
-            left: 100%;
+        
+        .submit-btn:active {
+            transform: translateY(0);
         }
-
-        .form-submit:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(193, 16, 16, 0.4);
-        }
-
+        
         /* Contact Info */
-        .contact-info-section {
-            animation: fadeInRight 1s ease-out;
-        }
-
-        .contact-info-section h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: #fff;
-        }
-
-        .contact-info-section .subtitle {
-            color: #ccc;
-            margin-bottom: 3rem;
-            line-height: 1.6;
-        }
-
-        .contact-info-grid {
-            display: flex;
-            flex-direction: column;
+        .contact-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
             gap: 30px;
+            margin-bottom: 40px;
         }
-
-        .contact-info-item {
-            background: rgba(255, 255, 255, 0.05);
+        
+        .info-card {
+            text-align: center;
+            padding: 30px 25px;
+            background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 30px;
+            border-radius: 20px;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
         }
-
-        .contact-info-item::before {
+        
+        .info-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            width: 4px;
-            height: 100%;
-            background: linear-gradient(135deg, #c11010, #ff4444);
-            transition: width 0.3s ease;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(193, 16, 16, 0.05), rgba(255, 68, 68, 0.05));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
         }
-
-        .contact-info-item:hover::before {
-            width: 100%;
-            opacity: 0.1;
-        }
-
-        .contact-info-item:hover {
-            transform: translateX(10px);
+        
+        .info-card:hover {
+            transform: translateY(-8px);
             border-color: rgba(193, 16, 16, 0.3);
+            box-shadow: 0 20px 40px rgba(193, 16, 16, 0.1);
         }
-
-        .contact-info-item .icon {
-            font-size: 2rem;
-            color: #c11010;
-            margin-bottom: 15px;
-            display: block;
+        
+        .info-card:hover::before {
+            opacity: 1;
         }
-
-        .contact-info-item h4 {
-            color: #fff;
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-
-        .contact-info-item p {
-            color: #ccc;
-            line-height: 1.6;
-            margin-bottom: 5px;
-        }
-
-        .contact-info-item a {
-            color: #c11010;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .contact-info-item a:hover {
-            text-decoration: underline;
-            transform: translateX(5px);
-        }
-
-        /* Map Section */
-        .map-section {
-            padding: 100px 0;
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-            animation: fadeInUp 0.8s ease-out;
-        }
-
-        .section-subtitle {
-            color: #c11010;
-            font-size: 0.9rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 1rem;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            line-height: 1.3;
-        }
-
-        .section-description {
-            font-size: 1.1rem;
-            color: #ccc;
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.6;
-        }
-
-        .map-container {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        
+        .info-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #c11010, #ff4444);
             border-radius: 20px;
-            padding: 40px;
-            text-align: center;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        .map-placeholder {
-            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
-            border-radius: 15px;
-            height: 400px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 30px;
+            margin: 0 auto 20px;
+            font-size: 24px;
+            position: relative;
+            z-index: 1;
+            transition: transform 0.3s ease;
+        }
+        
+        .info-card:hover .info-icon {
+            transform: scale(1.1);
+        }
+        
+        .info-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+            color: #fff;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .info-detail {
+            color: #cccccc;
+            font-size: 0.95rem;
+            font-weight: 500;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Map Section */
+        .map-section {
+            padding: 80px 0;
+            background: #0a0a0a;
+            text-align: center;
+        }
+
+        .map-container {
+            height: 400px; /* Increased height for better visibility */
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.02);
+            position: relative;
+            margin-top: 40px; /* Space from contact info */
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 20px;
+            filter: grayscale(20%) contrast(110%) brightness(95%);
+            transition: filter 0.3s ease;
+        }
+        
+        .map-container:hover iframe {
+            filter: grayscale(0%) contrast(120%) brightness(100%);
+        }
+        
+        .map-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(193, 16, 16, 0.1), rgba(255, 68, 68, 0.1));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 600;
             position: relative;
             overflow: hidden;
         }
-
+        
         .map-placeholder::before {
             content: '';
             position: absolute;
             top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(193, 16, 16, 0.1), transparent);
-            animation: shimmer 3s ease-in-out infinite;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle fill="rgba(193,16,16,0.2)" cx="30" cy="30" r="1"/><circle fill="rgba(255,68,68,0.2)" cx="70" cy="20" r="0.5"/><circle fill="rgba(193,16,16,0.2)" cx="20" cy="70" r="1.5"/><circle fill="rgba(255,68,68,0.2)" cx="80" cy="80" r="0.8"/></svg>');
+            animation: float 15s ease-in-out infinite;
         }
-
-        .map-placeholder-text {
-            color: #888;
-            font-size: 18px;
-            font-weight: 600;
-        }
-
-        .map-address {
-            color: #ccc;
-            font-size: 16px;
-            line-height: 1.6;
-        }
-
-        /* Office Hours */
-        .office-hours {
-            padding: 80px 0;
-            background: linear-gradient(135deg, #111 0%, #000 100%);
-        }
-
-        .hours-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            margin-top: 60px;
-        }
-
-        .hours-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 30px;
+        
+        /* CTA Section */
+        .cta-section {
+            /* UPDATED: Added background image with black overlay */
+            background:
+                linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), /* Black overlay for text readability */
+                url('img/contact-cta.jpg') no-repeat center center / cover, /* Your CTA background image */
+                radial-gradient(circle at 30% 70%, rgba(193, 16, 16, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 70% 30%, rgba(255, 68, 68, 0.2) 0%, transparent 50%);
+            padding: 100px 0;
             text-align: center;
-            transition: all 0.3s ease;
-            animation: fadeInUp 0.8s ease-out;
+            position: relative;
+            overflow: hidden;
         }
-
-        .hours-card:nth-child(2) { animation-delay: 0.2s; }
-        .hours-card:nth-child(3) { animation-delay: 0.4s; }
-
-        .hours-card:hover {
-            transform: translateY(-10px);
-            background: rgba(193, 16, 16, 0.1);
-            border-color: rgba(193, 16, 16, 0.3);
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle fill="rgba(193,16,16,0.1)" cx="20" cy="20" r="2"/><circle fill="rgba(255,68,68,0.1)" cx="80" cy="40" r="1"/><circle fill="rgba(193,16,16,0.1)" cx="40" cy="80" r="3"/></svg>');
+            opacity: 0.3;
+            animation: float 25s ease-in-out infinite reverse;
         }
-
-        .hours-card .icon {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            display: block;
+        
+        .cta-content {
+            position: relative;
+            z-index: 1;
         }
-
-        .hours-card h4 {
-            color: #fff;
-            font-size: 20px;
-            font-weight: 600;
+        
+        .cta-subtitle {
+            color: #c11010;
+            font-size: 1.1rem;
             margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
         }
-
-        .hours-card p {
-            color: #ccc;
-            line-height: 1.6;
+        
+        .cta-title {
+            font-size: 3.5rem;
+            margin-bottom: 40px;
+            font-weight: 700;
+            line-height: 1.2;
+            background: linear-gradient(135deg, #fff, #c11010);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-
+        
+        .cta-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #c11010, #ff4444);
+            color: #fff;
+            padding: 18px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(193, 16, 16, 0.4);
+        }
+        
         /* Footer */
-        footer {
-            background: #000;
-            padding: 60px 0 20px;
+        .footer {
+            background: #050505;
+            padding: 60px 0 30px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
-
+        
         .footer-content {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 40px;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 50px;
             margin-bottom: 40px;
         }
-
-        .footer-logo {
-            font-size: 24px;
-            font-weight: 700;
+        
+        .footer-section h3 {
+            margin-bottom: 25px;
             color: #c11010;
-            margin-bottom: 15px;
+            font-weight: 700;
+            font-size: 1.2rem;
         }
-
-        .footer-description {
-            color: #ccc;
-            line-height: 1.6;
-            margin-bottom: 20px;
+        
+        .footer-section p,
+        .footer-section a {
+            color: #cccccc;
+            text-decoration: none;
+            margin-bottom: 12px;
+            display: block;
+            font-weight: 500;
+            transition: color 0.3s ease;
         }
-
+        
+        .footer-section a:hover {
+            color: #c11010;
+        }
+        
         .social-links {
             display: flex;
             gap: 15px;
+            margin-top: 25px;
         }
-
+        
         .social-link {
-            display: inline-block;
-            padding: 10px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            color: #fff;
-        }
-
-        .social-link:hover {
-            background: #c11010;
-            transform: translateY(-3px);
-        }
-
-        .footer-title {
-            color: #fff;
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 20px;
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 8px;
-        }
-
-        .footer-links a {
-            color: #ccc;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: #c11010;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 20px;
-        }
-
-        .footer-bottom-content {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #c11010, #ff4444);
+            border-radius: 12px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            color: #888;
-            font-size: 14px;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
         }
-
-        /* Animations */
-        @keyframes slideDown {
-            from { transform: translateY(-100%); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+        
+        .social-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(193, 16, 16, 0.3);
         }
-
-        @keyframes fadeInLeft {
-            from { transform: translateX(-50px); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #999;
+            font-weight: 500;
         }
-
-        @keyframes fadeInRight {
-            from { transform: translateX(50px); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-
-        @keyframes fadeInUp {
-            from { transform: translateY(30px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        @keyframes underlineExpand {
-            from { width: 0; }
-            to { width: 100%; }
-        }
-
-        @keyframes glow {
-            from { box-shadow: 0 0 5px rgba(193, 16, 16, 0.2); }
-            to { box-shadow: 0 0 20px rgba(193, 16, 16, 0.4); }
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.05); opacity: 0.8; }
-        }
-
-        @keyframes shimmer {
-            0% { left: -100%; }
-            100% { left: 100%; }
-        }
-
-        /* Responsive Design */
+        
+        /* Responsive */
         @media (max-width: 768px) {
-            .contact-hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .contact-content {
+            .content-grid {
                 grid-template-columns: 1fr;
                 gap: 40px;
             }
-
-            .form-row {
+            
+            .contact-info {
                 grid-template-columns: 1fr;
             }
-
-            .hours-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-
+            
             .footer-content {
                 grid-template-columns: 1fr;
-                gap: 30px;
             }
-
-            .footer-bottom-content {
-                flex-direction: column;
-                gap: 15px;
-                text-align: center;
+            
+            .hero h1 {
+                font-size: 2.5rem;
             }
-        }
-
-        @media (max-width: 480px) {
-            .contact-hero h1 {
+            
+            .cta-title {
                 font-size: 2rem;
             }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .contact-form {
-                padding: 25px;
-            }
-
-            .contact-info-item {
-                padding: 20px;
+            
+            .nav-links {
+                display: none;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <nav class="container">
-            <div class="logo">Trade Wings</div>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.">About</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="contact.html" class="active">Contact</a></li>
-            </ul>
-            <a href="#quote" class="cta-button">Get Quote</a>
-        </nav>
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <div class="logo">
+                    <img src="img/logo.png" alt="Trade Wings Logo" class="logo-img">
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                </ul>
+                <a href="#contact" class="contact-btn">Contact Us</a>
+            </nav>
+        </div>
     </header>
 
-    <!-- Contact Hero Section -->
-    <section class="contact-hero">
+    <section class="hero">
         <div class="container">
-            <span class="hero-badge">Get In Touch</span>
-            <h1>Contact <span class="highlight">Trade Wings</span> Today</h1>
-            <p>Ready to transform your business with cutting-edge ICT infrastructure and security solutions? We're here to help you succeed. Let's discuss your project requirements and find the perfect solution for your needs.</p>
+            <h1>Contact Us</h1>
+            <div class="breadcrumb">
+                <a href="#home">Home</a> / Contact
+            </div>
         </div>
     </section>
 
-    <!-- Contact Main Section -->
-    <section class="contact-main">
+    <section class="main-content">
         <div class="container">
-            <div class="contact-content">
-                <!-- Contact Form -->
+            <div class="content-grid">
                 <div class="contact-form-section">
-                    <h2>Send Us a Message</h2>
-                    <p class="subtitle">Fill out the form below and we'll get back to you within 24 hours. Our team of experts is ready to discuss your project requirements and provide tailored solutions.</p>
-                    
-                    <form class="contact-form" action="#" method="POST">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="firstName">First Name *</label>
-                                <input type="text" id="firstName" name="firstName" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="lastName">Last Name *</label>
-                                <input type="text" id="lastName" name="lastName" required>
-                            </div>
-                        </div>
-                        
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="email">Email Address *</label>
-                                <input type="email" id="email" name="email" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="phone">Phone Number</label>
-                                <input type="tel" id="phone" name="phone">
-                            </div>
-                        </div>
-                        
+                    <div class="section-title">Contact Us</div>
+                    <h2 class="form-title">Get In Touch</h2>
+                    <form id="contactForm">
                         <div class="form-group">
-                            <label for="company">Company Name</label>
-                            <input type="text" id="company" name="company">
+                            <input type="text" class="form-input" placeholder="Your Name..." required>
                         </div>
-                        
                         <div class="form-group">
-                            <label for="service">Service Interest</label>
-                            <select id="service" name="service">
-                                <option value="">Select a service</option>
-                                <option value="ict-infrastructure">ICT Infrastructure Development</option>
-                                <option value="network-cabling">Network Structured Cabling</option>
-                                <option value="security-systems">Security Systems (CCTV, Access Control)</option>
-                                <option value="telephony">IP Telephony Solutions</option>
-                                <option value="multimedia">Multimedia Systems</option>
-                                <option value="iot">Internet of Things (IoT)</option>
-                                <option value="consultation">IT Consultation</option>
-                                <option value="other">Other</option>
-                            </select>
+                            <input type="email" class="form-input" placeholder="E-mail..." required>
                         </div>
-                        
                         <div class="form-group">
-                            <label for="message">Project Details *</label>
-                            <textarea id="message" name="message" placeholder="Please describe your project requirements, timeline, and any specific needs..." required></textarea>
+                            <input type="text" class="form-input" placeholder="Subject..." required>
                         </div>
-                        
-                        <button type="submit" class="form-submit">Send Message</button>
+                        <div class="form-group">
+                            <textarea class="form-input form-textarea" placeholder="Message..." required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Now</button>
                     </form>
                 </div>
 
-                <!-- Contact Information -->
-                <div class="contact-info-section">
-                    <h2>Get In Touch</h2>
-                    <p class="subtitle">Have questions? We'd love to hear from you. Reach out to us through any of the following channels.</p>
-                    
-                    <div class="contact-info-grid">
-                        <div class="contact-info-item">
-                            <span class="icon">📍</span>
-                            <h4>Visit Our Office</h4>
-                            <p>Rock House Building<br>
-                            Sheikh Kurume Street, 4th Floor<br>
-                            Nairobi, Kenya</p>
-                            <p>P.O. Box 4066-00506 Nairobi</p>
+                <div>
+                    <div class="contact-info">
+                        <div class="info-card">
+                            <div class="info-icon">📞</div>
+                            <div class="info-title">Phone Number</div>
+                            <div class="info-detail">0721628950 / 0111505587</div>
                         </div>
-                        
-                        <div class="contact-info-item">
-                            <span class="icon">📞</span>
-                            <h4>Call Us</h4>
-                            <p><a href="tel:+254721628950">+254 721 628 950</a></p>
-                            <p><a href="tel:+254111505587">+254 111 505 587</a></p>
-                            <p>Mon - Fri: 8:00 AM - 6:00 PM</p>
+                        <div class="info-card">
+                            <div class="info-icon">✉️</div>
+                            <div class="info-title">Email Address</div>
+                            <div class="info-detail">info@tradewings.co.ke</div>
                         </div>
-                        
-                        <div class="contact-info-item">
-                            <span class="icon">📧</span>
-                            <h4>Email Us</h4>
-                            <p><a href="mailto:info@tradewings.co.ke">info@tradewings.co.ke</a></p>
-                            <p>We respond within 24 hours</p>
+                        <div class="info-card">
+                            <div class="info-icon">💬</div>
+                            <div class="info-title">WhatsApp</div>
+                            <div class="info-detail">0721628950</div>
                         </div>
-                        
-                        <div class="contact-info-item">
-                            <span class="icon">🌐</span>
-                            <h4>Online</h4>
-                            <p><a href="https://www.tradewings.co.ke" target="_blank">www.tradewings.co.ke</a></p>
-                            <p>Visit our website for more information</p>
+                        <div class="info-card">
+                            <div class="info-icon">📍</div>
+                            <div class="info-title">Our Office</div>
+                            <div class="info-detail">Millennium Business park. Langata Road. Karen</div>
                         </div>
                     </div>
                 </div>
@@ -840,135 +671,131 @@
         </div>
     </section>
 
-    <!-- Map Section -->
     <section class="map-section">
         <div class="container">
-            <div class="section-header">
-                <div class="section-subtitle">Find Us</div>
-                <h2 class="section-title">Our Location</h2>
-                <p class="section-description">Located in the heart of Nairobi's business district, we're easily accessible and ready to serve clients across Kenya and East Africa.</p>
-            </div>
-            
+            <div class="section-title">Our Location</div>
+            <h2 class="form-title">Find Us on the Map</h2>
             <div class="map-container">
-                <div class="map-placeholder">
-                    <div class="map-placeholder-text">Interactive Map Coming Soon</div>
-                </div>
-                <div class="map-address">
-                    <strong>Trade Wings Enterprises</strong><br>
-                    Rock House Building, Sheikh Kurume Street, 4th Floor<br>
-                    Nairobi, Kenya
-                </div>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.828695804561!2d36.82285857448825!3d-1.2778794356066223!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f10d6a2f4a477%3A0xcf9d8a5c3e6d8a3d!2sRock%20House%20Building!5e0!3m2!1sen!2ske!4v1719149495115!5m2!1sen!2ske" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
     </section>
 
-    <!-- Office Hours -->
-    <section class="office-hours">
+    <section class="cta-section">
         <div class="container">
-            <div class="section-header">
-                <div class="section-subtitle">Availability</div>
-                <h2 class="section-title">When We're Available</h2>
-                <p class="section-description">We're committed to providing excellent service and support when you need it most.</p>
-            </div>
-            
-            <div class="hours-grid">
-                <div class="hours-card">
-                    <span class="icon">🕒</span>
-                    <h4>Business Hours</h4>
-                    <p>Monday - Friday<br>8:00 AM - 6:00 PM<br><br>Saturday<br>9:00 AM - 2:00 PM</p>
-                </div>
-                
-                <div class="hours-card">
-                    <span class="icon">🚨</span>
-                    <h4>Emergency Support</h4>
-                    <p>24/7 emergency support available for critical infrastructure issues and security systems.</p>
-                </div>
-                
-                <div class="hours-card">
-                    <span class="icon">💬</span>
-                    <h4>Response Time</h4>
-                    <p>Email responses within 24 hours<br>Phone calls returned same day<br>Emergency calls answered immediately</p>
-                </div>
+            <div class="cta-content">
+                <div class="cta-subtitle">Hire Us Now</div>
+                <h2 class="cta-title">We Are Always Ready To<br>Take A Perfect Shot</h2>
+                <a href="#contact" class="cta-btn">Get Started</a>
             </div>
         </div>
     </section>
 
-        <footer>
+    <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <div class="footer-logo">Trade Wings</div>
-                    <p class="footer-description">Making great things possible through innovative ICT infrastructure, security solutions, and IoT technologies. Your trusted partner for digital transformation.</p>
+                    <h3>TRADE WINGS</h3>
+                    <p>Making great things possible through innovative ICT solutions, security systems, and IoT technologies.</p>
                     <div class="social-links">
-                        <a href="mailto:info@tradewings.co.ke" class="social-link">📧</a>
-                        <a href="tel:0721628950" class="social-link">📞</a>
-                        <a href="http://www.tradewings.co.ke" class="social-link">🌐</a>
-                        <a href="#contact" class="social-link">📍</a>
+                        <a href="#" class="social-link">f</a>
+                        <a href="#" class="social-link">t</a>
+                        <a href="#" class="social-link">in</a>
                     </div>
                 </div>
-
                 <div class="footer-section">
-                    <h4 class="footer-title">Services</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">Network Structured Cabling</a></li>
-                        <li><a href="#">CCTV Surveillance Systems</a></li>
-                        <li><a href="#">Access Control Systems</a></li>
-                        <li><a href="#">IP Telephony Solutions</a></li>
-                        <li><a href="#">Internet Setup & Support</a></li>
-                        <li><a href="#">IoT Solutions</a></li>
-                    </ul>
+                    <h3>Our Services</h3>
+                    <a href="#">ICT Infrastructure</a>
+                    <a href="#">Security Systems</a>
+                    <a href="#">Network Cabling</a>
+                    <a href="#">CCTV Installation</a>
                 </div>
-
                 <div class="footer-section">
-                    <h4 class="footer-title">Solutions</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">ICT Infrastructure</a></li>
-                        <li><a href="#">Security Operations</a></li>
-                        <li><a href="#">Multimedia Systems</a></li>
-                        <li><a href="#">RF Cabling & TV Distribution</a></li>
-                        <li><a href="#">Digital Signage</a></li>
-                        <li><a href="#">Business Music Systems</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-section">
-                    <h4 class="footer-title">Contact Info</h4>
-                    <div class="contact-details">
-                        <div class="contact-detail">
-                            <span class="contact-icon">📍</span>
-                            <div>
-                                <p>Millennium Business park</p>
-                                <p>Langata Road. Karen</p>
-                                <p>P.O. Box 4066-00506 Nairobi</p>
-                            </div>
-                        </div>
-                        <div class="contact-detail">
-                            <span class="contact-icon">📞</span>
-                            <div>
-                                <p>0721628950</p>
-                                <p>0111505587</p>
-                            </div>
-                        </div>
-                        <div class="contact-detail">
-                            <span class="contact-icon">✉️</span>
-                            <div>
-                                <p>info@tradewings.co.ke</p>
-                                <p>www.tradewings.co.ke</p>
-                            </div>
-                        </div>
-                    </div>
+                    <h3>Get In Touch</h3>
+                    <p>📍 Millennium Business park. Langata Road. Karen</p>
+                    <p>📞 0721628950 / 0111505587</p>
+                    <p>✉️ info@tradewings.co.ke</p>
+                    <p>🌐 www.tradewings.co.ke</p>
                 </div>
             </div>
-
             <div class="footer-bottom">
-                <div class="footer-bottom-content">
-                    <p>&copy; 2025 Trade Wings Systems Ltd. All rights reserved.</p>
-                    <div class="footer-bottom-links">
-                        <a href="#">Privacy Policy</a>
-                        <a href="#">Terms of Service</a>
-                        <a href="#">Support</a>
-                    </div>
-                </div>
+                <p>Copyright © 2025 Trade Wings Enterprises | Powered by Trade Wings</p>
             </div>
         </div>
     </footer>
+
+    <script>
+        // Form submission handler
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simple form validation and submission simulation
+            const inputs = this.querySelectorAll('.form-input');
+            let isValid = true;
+            
+            inputs.forEach(input => {
+                if (!input.value.trim()) {
+                    isValid = false;
+                    input.style.borderColor = '#e74c3c';
+                } else {
+                    input.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+                }
+            });
+            
+            if (isValid) {
+                // Simulate form submission
+                const btn = this.querySelector('.submit-btn');
+                const originalText = btn.textContent;
+                btn.textContent = 'Sending...';
+                btn.disabled = true;
+                
+                setTimeout(() => {
+                    alert('Thank you! Your message has been sent successfully.');
+                    this.reset();
+                    btn.textContent = originalText;
+                    btn.disabled = false;
+                }, 2000);
+            } else {
+                alert('Please fill in all required fields.');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.info-card, .contact-form-section, .map-container').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

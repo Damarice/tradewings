@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Trade Wings Enterprises</title>
+    <title>About Us - Trade Wings Systems Ltd</title>
     <style>
         * {
             margin: 0;
@@ -13,9 +13,10 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #000;
+            background: #0a0a0a;
             color: #fff;
             overflow-x: hidden;
+            line-height: 1.6;
         }
 
         .container {
@@ -24,54 +25,66 @@
             padding: 0 20px;
         }
 
-        /* Header Styles */
+        /* Header */
         header {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(10, 10, 10, 0.95);
             backdrop-filter: blur(20px);
             z-index: 1000;
-            transition: all 0.3s ease;
-            animation: slideDown 0.8s ease-out;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 0;
         }
 
         .logo {
-            font-size: 24px;
-            font-weight: 700;
-            color: #c11010;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        .logo:hover {
-            transform: scale(1.05);
-            text-shadow: 0 0 20px rgba(193, 16, 16, 0.5);
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #c11010, #ff4444);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: #fff;
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 40px;
         }
 
         .nav-links a {
             color: #fff;
             text-decoration: none;
+            font-weight: 500;
             transition: all 0.3s ease;
             position: relative;
         }
 
+        .nav-links a.active,
         .nav-links a:hover {
             color: #c11010;
-            transform: translateY(-2px);
         }
 
         .nav-links a::after {
@@ -85,54 +98,41 @@
             transition: width 0.3s ease;
         }
 
+        .nav-links a.active::after,
         .nav-links a:hover::after {
             width: 100%;
         }
 
-        .cta-button {
+        .contact-btn {
             background: linear-gradient(135deg, #c11010, #ff4444);
             color: #fff;
             padding: 12px 25px;
             border-radius: 25px;
             text-decoration: none;
+            font-weight: 600;
             transition: all 0.3s ease;
             border: none;
             cursor: pointer;
-            position: relative;
-            overflow: hidden;
         }
 
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s ease;
+        .contact-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(193, 16, 16, 0.4);
         }
-
-        .cta-button:hover::before {
-            left: 100%;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(193, 16, 16, 0.4);
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 60vh;
-            display: flex;
-            align-items: center;
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
-            position: relative;
-            overflow: hidden;
-            margin-top: 80px;
-        }
-
+/* Hero Section */
+.hero {
+    height: 50vh; /* Reduced to half the original size */
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)),  url('img/about-hero.jpg'); /* Updated hero image */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: -60px; /* Reduced space by pulling the hero section down into the next section */
+}
         .hero::before {
             content: '';
             position: absolute;
@@ -140,430 +140,370 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(circle at 70% 30%, rgba(193, 16, 16, 0.1) 0%, transparent 50%);
+            background: radial-gradient(circle at 50% 50%, rgba(193, 16, 16, 0.1) 0%, transparent 70%);
             animation: pulse 4s ease-in-out infinite;
         }
 
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+        }
+
         .hero-content {
-            text-align: center;
             position: relative;
             z-index: 2;
+            max-width: 800px;
             animation: fadeInUp 1s ease-out;
         }
 
-        .hero-badge {
-            display: inline-block;
-            background: rgba(193, 16, 16, 0.1);
+        .breadcrumb {
+            color: #ccc;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+
+        .breadcrumb a {
             color: #c11010;
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 2rem;
-            border: 1px solid rgba(193, 16, 16, 0.3);
-            animation: glow 2s ease-in-out infinite alternate;
+            text-decoration: none;
         }
 
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 4rem;
             font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 1.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff, #c11010);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .highlight {
-            color: #c11010;
-            position: relative;
+        @keyframes fadeInUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
 
-        .hero p {
-            font-size: 1.2rem;
-            line-height: 1.6;
-            color: #ccc;
-            max-width: 600px;
-            margin: 0 auto;
+        /* Main Content */
+        .main-content {
+            background: #111;
+            padding: 60px 0 40px;
+            position: relative; /* Added for overlapping */
+            z-index: 1; /* Ensures it appears below header but above hero's negative margin content if any */
         }
 
-        /* Section Styles */
-        .section {
-            padding: 100px 0;
-            position: relative;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-            animation: fadeInUp 0.8s ease-out;
-        }
-
-        .section-subtitle {
-            color: #c11010;
-            font-size: 0.9rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 1rem;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            line-height: 1.3;
-        }
-
-        .section-description {
-            font-size: 1.1rem;
-            color: #ccc;
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.6;
-        }
-
-        /* Story Section */
-        .story {
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
-        }
-
-        .story-content {
+        .about-section {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 60px;
             align-items: center;
-            margin-top: 60px;
+            margin-bottom: 40px;
         }
 
-        .story-text h3 {
-            font-size: 32px;
-            font-weight: 700;
-            margin-bottom: 25px;
-            color: #ffffff;
-        }
-
-        .story-text p {
-            font-size: 16px;
-            line-height: 1.8;
-            color: #ccc;
-            margin-bottom: 20px;
-        }
-
-        .highlight-text {
-            color: #c11010;
-            font-weight: 600;
-        }
-
-        .story-visual {
+        .about-image {
             position: relative;
-        }
-
-        .story-card {
-            background: linear-gradient(135deg, rgba(193, 16, 16, 0.1) 0%, rgba(30, 30, 30, 0.8) 100%);
-            border: 1px solid rgba(193, 16, 16, 0.2);
             border-radius: 20px;
-            padding: 40px;
-            backdrop-filter: blur(10px);
-            position: relative;
             overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 500px;
+            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            background-image: url('img/about.jpg'); /* Keeping original about image */
+            background-size: cover;
+            background-position: center;
         }
 
-        .story-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(193, 16, 16, 0.2);
-        }
-
-        .story-card::before {
+        .about-image::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #c11010, #ff4444);
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(193, 16, 16, 0.1), transparent);
         }
 
-        .story-card h4 {
+        .about-content {
+            padding: 20px 0;
+        }
+
+        .section-label {
             color: #c11010;
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
         }
 
-        .story-card p {
+        .about-content h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            line-height: 1.2;
+        }
+
+        .about-content p {
             color: #ccc;
             font-size: 16px;
-            line-height: 1.6;
+            margin-bottom: 20px;
+            line-height: 1.8;
         }
 
-        /* Mission & Vision */
-        .mission-vision {
-            background: linear-gradient(135deg, #111 0%, #000 100%);
+        .highlight {
+            color: #c11010;
+            font-weight: 600;
         }
 
-        .mission-vision-grid {
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #c11010, #ff4444);
+            color: #fff;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(193, 16, 16, 0.4);
+        }
+
+        /* Skills Section */
+        .skills-section {
+            background: #0a0a0a;
+            padding: 60px 0 40px;
+        }
+
+        .skills-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin-top: 60px;
+            gap: 60px;
+            align-items: flex-start;
         }
 
-        .mission-card, .vision-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 40px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            animation: fadeInUp 0.8s ease-out;
-        }
-
-        .vision-card {
-            animation-delay: 0.2s;
-        }
-
-        .mission-card::before, .vision-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(193, 16, 16, 0.1), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .mission-card:hover::before, .vision-card:hover::before {
-            left: 100%;
-        }
-
-        .mission-card:hover, .vision-card:hover {
-            transform: translateY(-15px);
-            border-color: rgba(193, 16, 16, 0.3);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .mission-icon, .vision-icon {
-            font-size: 48px;
-            margin-bottom: 20px;
-            display: block;
-        }
-
-        .mission-card h3, .vision-card h3 {
-            font-size: 24px;
+        .skills-content h2 {
+            color: #fff;
+            font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 20px;
-            color: #fff;
         }
 
-        .mission-card p, .vision-card p {
+        .skills-content p {
             color: #ccc;
-            line-height: 1.6;
+            font-size: 16px;
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        .skill-item {
+            margin-bottom: 30px;
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .skill-name {
+            color: #fff;
+            font-weight: 600;
             font-size: 16px;
         }
 
-        /* Values Section */
-        .values {
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
-        }
-
-        .values-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
-            margin-top: 60px;
-        }
-
-        .value-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 30px;
-            text-align: center;
-            transition: all 0.3s ease;
-            animation: fadeInUp 0.8s ease-out;
-        }
-
-        .value-card:nth-child(2) { animation-delay: 0.1s; }
-        .value-card:nth-child(3) { animation-delay: 0.2s; }
-        .value-card:nth-child(4) { animation-delay: 0.3s; }
-
-        .value-card:hover {
-            transform: translateY(-10px) scale(1.05);
-            border-color: rgba(193, 16, 16, 0.3);
-            box-shadow: 0 15px 30px rgba(193, 16, 16, 0.2);
-        }
-
-        .value-icon {
-            font-size: 48px;
-            margin-bottom: 20px;
-            transition: transform 0.3s ease;
-        }
-
-        .value-card:hover .value-icon {
-            transform: rotate(10deg) scale(1.1);
-        }
-
-        .value-card h4 {
-            color: #ffffff;
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-
-        .value-card p {
-            color: #ccc;
-            font-size: 14px;
-            line-height: 1.6;
-        }
-
-        /* Team Section */
-        .team {
-            background: linear-gradient(135deg, #111 0%, #000 100%);
-        }
-
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-            margin-top: 60px;
-        }
-
-        .team-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 30px;
-            text-align: center;
-            transition: all 0.3s ease;
-            animation: fadeInUp 0.8s ease-out;
-        }
-
-        .team-card:nth-child(2) { animation-delay: 0.2s; }
-        .team-card:nth-child(3) { animation-delay: 0.4s; }
-
-        .team-card:hover {
-            transform: translateY(-10px);
-            border-color: rgba(193, 16, 16, 0.3);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .team-avatar {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #c11010, #ff4444);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 36px;
-            margin: 0 auto 20px;
-            color: #fff;
-        }
-
-        .team-card h4 {
-            color: #fff;
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .team-role {
+        .skill-percentage {
             color: #c11010;
-            font-size: 14px;
-            font-weight: 500;
-            margin-bottom: 15px;
+            font-weight: 600;
+            font-size: 16px;
         }
 
-        .team-card p {
-            color: #ccc;
-            font-size: 14px;
-            line-height: 1.6;
+        .skill-bar {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #c11010, #ff4444);
+            border-radius: 4px;
+            transition: width 2s ease-in-out;
+            animation: fillBar 2s ease-in-out;
+        }
+
+        @keyframes fillBar {
+            from { width: 0; }
         }
 
         /* Stats Section */
         .stats-section {
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
-        }
-
-        .stats-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 40px;
-            margin-top: 60px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            text-align: center;
         }
 
-        .stat-card {
-            text-align: center;
-            padding: 30px;
+        .stat-item {
+            padding: 40px 20px;
             background: rgba(255, 255, 255, 0.05);
             border-radius: 15px;
             transition: all 0.3s ease;
-            animation: fadeInUp 0.8s ease-out;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .stat-card:nth-child(2) { animation-delay: 0.1s; }
-        .stat-card:nth-child(3) { animation-delay: 0.2s; }
-        .stat-card:nth-child(4) { animation-delay: 0.3s; }
-
-        .stat-card:hover {
+        .stat-item:hover {
             transform: translateY(-10px);
             background: rgba(193, 16, 16, 0.1);
+            border-color: rgba(193, 16, 16, 0.3);
         }
 
-        .stat-value {
+        .stat-number {
             font-size: 3rem;
             font-weight: 700;
             color: #c11010;
             margin-bottom: 10px;
+            display: block;
         }
 
-        .stat-description {
+        .stat-label {
             color: #ccc;
             font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #1a1a1a, #0a0a0a);
+            padding: 60px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('img/about-cta.jpg'); /* Updated CTA background image */
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-label {
+            color: #c11010;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .cta-content h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            line-height: 1.2;
+        }
+
+        .cta-content p {
+            color: #ccc;
+            font-size: 18px;
+            margin-bottom: 40px;
+            line-height: 1.6;
         }
 
         /* Footer */
         footer {
             background: #000;
-            padding: 60px 0 20px;
+            padding: 60px 0 30px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .footer-content {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
+            grid-template-columns: 2fr 1fr 1fr;
             gap: 40px;
             margin-bottom: 40px;
         }
 
+        .footer-section h3 {
+            color: #fff;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 25px;
+        }
+
         .footer-logo {
-            font-size: 24px;
-            font-weight: 700;
-            color: #c11010;
-            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo .logo-icon {
+            width: 35px;
+            height: 35px;
+            font-size: 16px;
+        }
+
+        .footer-logo .logo-text {
+            font-size: 20px;
         }
 
         .footer-description {
             color: #ccc;
             line-height: 1.6;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+        }
+
+        .contact-info {
+            list-style: none;
+        }
+
+        .contact-info li {
+            color: #ccc;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-info .icon {
+            color: #c11010;
+            font-size: 16px;
+            width: 20px;
         }
 
         .social-links {
             display: flex;
             gap: 15px;
+            margin-top: 20px;
         }
 
         .social-link {
-            display: inline-block;
-            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
-            transition: all 0.3s ease;
+            color: #fff;
             text-decoration: none;
+            transition: all 0.3s ease;
         }
 
         .social-link:hover {
@@ -571,19 +511,12 @@
             transform: translateY(-3px);
         }
 
-        .footer-title {
-            color: #fff;
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 20px;
-        }
-
         .footer-links {
             list-style: none;
         }
 
         .footer-links li {
-            margin-bottom: 8px;
+            margin-bottom: 12px;
         }
 
         .footer-links a {
@@ -598,7 +531,7 @@
 
         .footer-bottom {
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 20px;
+            padding-top: 30px;
             text-align: center;
         }
 
@@ -607,28 +540,7 @@
             font-size: 14px;
         }
 
-        /* Animations */
-        @keyframes slideDown {
-            from { transform: translateY(-100%); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        @keyframes fadeInUp {
-            from { transform: translateY(30px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        @keyframes glow {
-            from { box-shadow: 0 0 5px rgba(193, 16, 16, 0.2); }
-            to { box-shadow: 0 0 20px rgba(193, 16, 16, 0.4); }
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.05); opacity: 0.8; }
-        }
-
-        /* Responsive Design */
+        /* Mobile Responsiveness */
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -638,311 +550,206 @@
                 font-size: 2.5rem;
             }
 
-            .story-content {
+            .about-section,
+            .skills-container {
                 grid-template-columns: 1fr;
                 gap: 40px;
             }
 
-            .mission-vision-grid {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-
-            .values-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 20px;
-            }
-
-            .team-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-
-            .stats-grid {
+            .stats-section {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 20px;
             }
 
             .footer-content {
                 grid-template-columns: 1fr;
-                gap: 30px;
+                gap: 40px;
+            }
+
+            .about-content h2,
+            .cta-content h2 {
+                font-size: 2rem;
             }
         }
 
         @media (max-width: 480px) {
-            .values-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .stats-grid {
+            .stats-section {
                 grid-template-columns: 1fr;
             }
 
             .hero h1 {
                 font-size: 2rem;
             }
-
-            .section-title {
-                font-size: 2rem;
-            }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header>
         <nav class="container">
-            <div class="logo">Trade Wings</div>
+            <div class="logo">
+                <div class="logo-icon">TW</div>
+                <div class="logo-text">TRADE WINGS</div>
+            </div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
+                <li><a href="about.html" class="active">About Us</a></li>
                 <li><a href="services.html">Services</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
-            <a href="contact.html" class="cta-button">Get Started</a>
+            <a href="#contact" class="contact-btn">Contact Us</a>
         </nav>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero">
+        <div class="hero-content">
+            <div class="breadcrumb">
+                <a href="#home">Home</a> / About Us
+            </div>
+            <h1>About Us</h1>
+        </div>
+    </section>
+
+    <section class="main-content">
         <div class="container">
-            <div class="hero-content">
-                <div class="hero-badge">About Our Company</div>
-                <h1>Building the <span class="highlight">Future</span> Together</h1>
-                <p>Discover the story behind Trade Wings Enterprises and our commitment to transforming businesses through innovative technology solutions.</p>
+            <div class="about-section">
+                <div class="about-image"></div>
+                <div class="about-content">
+                    <div class="section-label">About Us</div>
+                    <h2>We Always Make The Best</h2>
+                    <p>At Trade Wings Systems Ltd, we are <span class="highlight">solution architects, innovation enablers, and your strategic technology partner</span>. We offer comprehensive ICT solutions to SMEs and large enterprises, ranging from simple hardware installations to advanced information technology systems with complex security and firewall requirements.</p>
+                    <p>We believe <span class="highlight">ICT is an investment that should provide tangible benefits</span> to organizations, justifying its existence and implementation. Our automation solutions help cut costs, increase efficiency, and put our clients at a competitive advantage in their market environments.</p>
+                    <a href="#contact" class="cta-button">Contact Us</a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Our Story -->
-    <section class="section story">
+    <section class="skills-section">
         <div class="container">
-            <div class="section-header">
-                <div class="section-subtitle">Our Journey</div>
-                <h2 class="section-title">The Trade Wings Story</h2>
-                <p class="section-description">From humble beginnings to becoming a trusted technology partner for businesses across Kenya and beyond.</p>
-            </div>
-            
-            <div class="story-content">
-                <div class="story-text">
-                    <h3>More Than Just Technology</h3>
-                    <p>At Trade Wings Systems Ltd, we are <span class="highlight-text">solution architects, innovation enablers, and your strategic technology partner</span>. What started as a vision to bridge the technology gap for businesses has evolved into a comprehensive ecosystem of ICT solutions.</p>
+            <div class="skills-container">
+                <div class="skills-content">
+                    <h2>Our Skills</h2>
+                    <p>With over 15 years of experience in ICT infrastructure and security solutions, we have developed expertise across multiple technology domains to deliver comprehensive solutions that drive business growth.</p>
                     
-                    <p>We specialize in delivering comprehensive solutions to SMEs and large enterprises, ranging from simple hardware and software installations to advanced information technology systems with complex security and firewall requirements.</p>
-                    
-                    <p>Our journey began with a simple belief: <span class="highlight-text">technology should empower businesses, not complicate them</span>. This philosophy continues to drive everything we do today.</p>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">ICT Infrastructure</span>
+                            <span class="skill-percentage">95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 95%"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Security Systems</span>
+                            <span class="skill-percentage">90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Network Solutions</span>
+                            <span class="skill-percentage">92%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 92%"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">IoT Integration</span>
+                            <span class="skill-percentage">85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
                 </div>
-                
-                <div class="story-visual">
-                    <div class="story-card">
-                        <h4>15+ Years of Excellence</h4>
-                        <p>Since our inception, we've been at the forefront of technological innovation, helping businesses transform their operations and achieve unprecedented growth through strategic technology implementation.</p>
+
+                <div class="stats-section">
+                    <div class="stat-item">
+                        <span class="stat-number">15+</span>
+                        <span class="stat-label">Years of Experience</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">Projects Done</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">300+</span>
+                        <span class="stat-label">Satisfied Clients</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">24</span>
+                        <span class="stat-label">Certified Awards</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Mission & Vision -->
-    <section class="section mission-vision">
+    <section class="cta-section">
         <div class="container">
-            <div class="section-header">
-                <div class="section-subtitle">Our Purpose</div>
-                <h2 class="section-title">Mission & Vision</h2>
-                <p class="section-description">The driving forces behind everything we do at Trade Wings Enterprises.</p>
-            </div>
-            
-            <div class="mission-vision-grid">
-                <div class="mission-card">
-                    <div class="mission-icon">🎯</div>
-                    <h3>Our Mission</h3>
-                    <p>We are passionate, determined and driven by the desire to succeed together. We are committed to our clients, their needs, priorities and successes. Our mission is to build a good reputation in the market by providing a wider selection of finest quality, most adorable solutions to meet our customer's unique needs while maintaining the highest standards of excellence.</p>
-                </div>
-                
-                <div class="vision-card">
-                    <div class="vision-icon">🚀</div>
-                    <h3>Our Vision</h3>
-                    <p>Our vision serves as the framework for our roadmap by describing what we need to do to continue to be an innovative leader in the ICT and security solutions industry. We envision a future where technology seamlessly integrates with business operations to drive unprecedented growth and efficiency.</p>
-                </div>
+            <div class="cta-content">
+                <div class="cta-label">Hire Us Now</div>
+                <h2>We Are Always Ready To Take A Perfect Solution</h2>
+                <p>Ready to transform your business with cutting-edge ICT infrastructure and security solutions? Let's discuss how we can help you achieve your technology goals and drive growth through innovation.</p>
+                <a href="#contact" class="cta-button">Get Started</a>
             </div>
         </div>
     </section>
 
-    <!-- Our Values -->
-    <section class="section values">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-subtitle">What Drives Us</div>
-                <h2 class="section-title">Our Core Values</h2>
-                <p class="section-description">The principles that guide our actions and define our company culture.</p>
-            </div>
-            
-            <div class="values-grid">
-                <div class="value-card">
-                    <div class="value-icon">💡</div>
-                    <h4>Innovation</h4>
-                    <p>We constantly seek new ways to solve problems and improve our solutions, staying ahead of technological trends.</p>
-                </div>
-                
-                <div class="value-card">
-                    <div class="value-icon">🤝</div>
-                    <h4>Partnership</h4>
-                    <p>We believe in building long-term relationships based on trust, reliability, and mutual success with our clients.</p>
-                </div>
-                
-                <div class="value-card">
-                    <div class="value-icon">🎯</div>
-                    <h4>Excellence</h4>
-                    <p>We maintain the highest standards in everything we do, from solution design to customer service.</p>
-                </div>
-                
-                <div class="value-card">
-                    <div class="value-icon">🛡️</div>
-                    <h4>Integrity</h4>
-                    <p>We operate with honesty, transparency, and ethical practices in all our business relationships.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Our Philosophy -->
-    <section class="section story">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-subtitle">Our Approach</div>
-                <h2 class="section-title">Technology as an Investment</h2>
-            </div>
-            
-            <div class="story-visual" style="max-width: 800px; margin: 0 auto;">
-                <div class="story-card">
-                    <h4>Strategic Technology Implementation</h4>
-                    <p>We believe ICT is an investment that should provide tangible benefits to organizations, justifying its existence and implementation. Automation using ICT should help in cutting costs, increasing efficiency, and putting our clients at a competitive advantage in their market environments.</p>
-                    <br>
-                    <p>We aim to propagate the most efficient way to improve every business process using Information Technology as a tool to enhance productivity and net output, while maintaining the highest standards of best practice.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Company Stats -->
-    <section class="section stats-section">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-subtitle">Our Impact</div>
-                <h2 class="section-title">Numbers That Matter</h2>
-                <p class="section-description">Measurable success in delivering technology solutions that transform businesses.</p>
-            </div>
-            
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-value">15+</div>
-                    <div class="stat-description">Years of Experience</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value">500+</div>
-                    <div class="stat-description">Projects Completed</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value">99%</div>
-                    <div class="stat-description">Client Satisfaction</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-value">24/7</div>
-                    <div class="stat-description">Support Available</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-        <footer>
+    <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <div class="footer-logo">Trade Wings</div>
+                    <div class="footer-logo">
+                        <div class="logo-icon">TW</div>
+                        <div class="logo-text">TRADE WINGS</div>
+                    </div>
                     <p class="footer-description">Making great things possible through innovative ICT infrastructure, security solutions, and IoT technologies. Your trusted partner for digital transformation.</p>
                     <div class="social-links">
-                        <a href="mailto:info@tradewings.co.ke" class="social-link">📧</a>
+                        <a href="mailto:info@tradewings.co.ke" class="social-link">✉</a>
                         <a href="tel:0721628950" class="social-link">📞</a>
                         <a href="http://www.tradewings.co.ke" class="social-link">🌐</a>
-                        <a href="#contact" class="social-link">📍</a>
                     </div>
                 </div>
 
                 <div class="footer-section">
-                    <h4 class="footer-title">Services</h4>
+                    <h3>Our Store</h3>
                     <ul class="footer-links">
-                        <li><a href="#">Network Structured Cabling</a></li>
-                        <li><a href="#">CCTV Surveillance Systems</a></li>
-                        <li><a href="#">Access Control Systems</a></li>
-                        <li><a href="#">IP Telephony Solutions</a></li>
-                        <li><a href="#">Internet Setup & Support</a></li>
-                        <li><a href="#">IoT Solutions</a></li>
+                        <li><a href="#services">ICT Infrastructure</a></li>
+                        <li><a href="#services">Security Systems</a></li>
+                        <li><a href="#services">Network Solutions</a></li>
+                        <li><a href="#services">IoT Solutions</a></li>
+                        <li><a href="#services">Multimedia Systems</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-section">
-                    <h4 class="footer-title">Solutions</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">ICT Infrastructure</a></li>
-                        <li><a href="#">Security Operations</a></li>
-                        <li><a href="#">Multimedia Systems</a></li>
-                        <li><a href="#">RF Cabling & TV Distribution</a></li>
-                        <li><a href="#">Digital Signage</a></li>
-                        <li><a href="#">Business Music Systems</a></li>
+                    <h3>Get In Touch</h3>
+                    <ul class="contact-info">
+                        <li><span class="icon">📍</span> Millennium Business Park, Langata Road, Karen</li>
+                        <li><span class="icon">📞</span> 0721628950 / 0111505587</li>
+                        <li><span class="icon">✉</span> info@tradewings.co.ke</li>
+                        <li><span class="icon">🌐</span> www.tradewings.co.ke</li>
                     </ul>
-                </div>
-
-                <div class="footer-section">
-                    <h4 class="footer-title">Contact Info</h4>
-                    <div class="contact-details">
-                        <div class="contact-detail">
-                            <span class="contact-icon">📍</span>
-                            <div>
-                                <p>Millennium Business park</p>
-                                <p>Langata Road. Karen</p>
-                                <p>P.O. Box 4066-00506 Nairobi</p>
-                            </div>
-                        </div>
-                        <div class="contact-detail">
-                            <span class="contact-icon">📞</span>
-                            <div>
-                                <p>0721628950</p>
-                                <p>0111505587</p>
-                            </div>
-                        </div>
-                        <div class="contact-detail">
-                            <span class="contact-icon">✉️</span>
-                            <div>
-                                <p>info@tradewings.co.ke</p>
-                                <p>www.tradewings.co.ke</p>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
 
             <div class="footer-bottom">
-                <div class="footer-bottom-content">
-                    <p>&copy; 2025 Trade Wings Systems Ltd. All rights reserved.</p>
-                    <div class="footer-bottom-links">
-                        <a href="#">Privacy Policy</a>
-                        <a href="#">Terms of Service</a>
-                        <a href="#">Support</a>
-                    </div>
-                </div>
+                <p>&copy; 2025 Trade Wings Systems Ltd. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Loading animation
-        window.addEventListener('load', function() {
-            const loadingOverlay = document.getElementById('loadingOverlay');
-            setTimeout(() => {
-                loadingOverlay.classList.add('hidden');
-            }, 1000);
-        });
-
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -957,32 +764,29 @@
             });
         });
 
-        // Scroll animations
-        const animateOnScrollElements = document.querySelectorAll('.animate-on-scroll');
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animated');
-                }
-            });
-        }, {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        });
-
-        animateOnScrollElements.forEach(el => {
-            observer.observe(el);
-        });
-
         // Header background change on scroll
         window.addEventListener('scroll', function() {
             const header = document.querySelector('header');
             if (window.scrollY > 100) {
-                header.style.background = 'rgba(0, 0, 0, 0.95)';
+                header.style.background = 'rgba(10, 10, 10, 0.98)';
             } else {
-                header.style.background = 'rgba(0, 0, 0, 0.9)';
+                header.style.background = 'rgba(10, 10, 10, 0.95)';
             }
+        });
+
+        // Animate skill bars when they come into view
+        const skillBars = document.querySelectorAll('.skill-progress');
+        const skillObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.width = entry.target.style.width;
+                    skillObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        skillBars.forEach(bar => {
+            skillObserver.observe(bar);
         });
 
         // Counter animation for stats
@@ -993,10 +797,10 @@
             function updateCounter() {
                 start += increment;
                 if (start < target) {
-                    element.textContent = Math.floor(start);
+                    element.textContent = Math.floor(start) + (element.textContent.includes('+') ? '+' : '');
                     requestAnimationFrame(updateCounter);
                 } else {
-                    element.textContent = target;
+                    element.textContent = target + (element.textContent.includes('+') ? '+' : '');
                 }
             }
             
@@ -1007,84 +811,37 @@
         const statsObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    const statValue = entry.target.querySelector('.stat-value');
-                    const heroStatNumber = entry.target.querySelector('.stat-number');
-                    
-                    if (statValue) {
-                        const targetText = statValue.textContent;
+                    const statNumber = entry.target.querySelector('.stat-number');
+                    if (statNumber) {
+                        const targetText = statNumber.textContent;
                         const targetNumber = parseInt(targetText.replace(/[^\d]/g, ''));
                         if (!isNaN(targetNumber)) {
-                            animateCounter(statValue, targetNumber);
+                            statNumber.textContent = '0';
+                            animateCounter(statNumber, targetNumber);
                         }
                     }
-                    
-                    if (heroStatNumber) {
-                        const targetText = heroStatNumber.textContent;
-                        const targetNumber = parseInt(targetText.replace(/[^\d]/g, ''));
-                        if (!isNaN(targetNumber)) {
-                            animateCounter(heroStatNumber, targetNumber);
-                        }
-                    }
-                    
                     statsObserver.unobserve(entry.target);
                 }
             });
         }, { threshold: 0.5 });
 
-        // Observe stat cards and hero stats
-        document.querySelectorAll('.stat-card, .stat-item').forEach(el => {
+        document.querySelectorAll('.stat-item').forEach(el => {
             statsObserver.observe(el);
         });
 
-        // Parallax effect for floating elements
-        window.addEventListener('scroll', function() {
-            const scrolled = window.pageYOffset;
-            const parallaxElements = document.querySelectorAll('.floating-element');
-            const speed = 0.5;
-
-            parallaxElements.forEach((element, index) => {
-                const yPos = -(scrolled * speed * (index + 1) * 0.1);
-                element.style.transform = `translateY(${yPos}px)`;
+        // Add scroll animations
+        const animateElements = document.querySelectorAll('.about-content, .skills-content, .cta-content');
+        const scrollObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 1s ease-out';
+                }
             });
+        }, { threshold: 0.2 });
+
+        animateElements.forEach(el => {
+            scrollObserver.observe(el);
         });
-
-        // Add hover sound effect simulation (visual feedback)
-        document.querySelectorAll('.cta-button, .service-card, .value-card').forEach(element => {
-            element.addEventListener('mouseenter', function() {
-                this.style.filter = 'brightness(1.1)';
-            });
-            
-            element.addEventListener('mouseleave', function() {
-                this.style.filter = 'brightness(1)';
-            });
-        });
-
-        // Mobile menu toggle (for future enhancement)
-        const mobileMenuToggle = document.createElement('div');
-        mobileMenuToggle.innerHTML = '☰';
-        mobileMenuToggle.style.cssText = `
-            display: none;
-            font-size: 24px;
-            color: #c11010;
-            cursor: pointer;
-            padding: 10px;
-        `;
-
-        // Add to navigation for mobile
-        const nav = document.querySelector('nav');
-        nav.appendChild(mobileMenuToggle);
-
-        // Show mobile menu toggle on small screens
-        function checkScreenSize() {
-            if (window.innerWidth <= 768) {
-                mobileMenuToggle.style.display = 'block';
-            } else {
-                mobileMenuToggle.style.display = 'none';
-            }
-        }
-
-        window.addEventListener('resize', checkScreenSize);
-        checkScreenSize();
     </script>
 </body>
 </html>
